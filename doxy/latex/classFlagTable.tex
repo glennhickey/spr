@@ -1,0 +1,335 @@
+\section{Flag\-Table$<$ T $>$ Class Template Reference}
+\label{classFlagTable}\index{FlagTable@{FlagTable}}
+This class keeps track of a boolean flag for each element of a tree string.  
+
+
+{\tt \#include $<$flagtable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Flag\-Table} ()
+\item 
+{\bf Flag\-Table} (int)
+\item 
+{\bf $\sim$Flag\-Table} ()
+\item 
+void {\bf resize} (int)
+\begin{CompactList}\small\item\em Resize table if necessary. \item\end{CompactList}\item 
+void {\bf set\-All} (bool, bool)
+\begin{CompactList}\small\item\em Set all flags in the table. \item\end{CompactList}\item 
+int {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Load a tree and compute the cherry position of all leaves. \item\end{CompactList}\item 
+void {\bf copy} (const {\bf Flag\-Table}$<$ T $>$ \&, const int $\ast$)
+\begin{CompactList}\small\item\em Copy the flags from a tree with a different topology. \item\end{CompactList}\item 
+int {\bf left\-Pos} (int) const 
+\item 
+int {\bf right\-Pos} (int) const 
+\item 
+int {\bf cherry\-Pos} (int) const 
+\begin{CompactList}\small\item\em Find the position of the cherry neighbour of the leaf at position pos in the tree, ignoring all flagged nodes. \item\end{CompactList}\item 
+void {\bf flag\-Leaf} (int)
+\begin{CompactList}\small\item\em {\bf Flag}{\rm (p.\,\pageref{structFlagTable_1_1Flag})} a leaf at position pos. \item\end{CompactList}\item 
+void {\bf set\-Flag} (int, {\bf Flag})
+\begin{CompactList}\small\item\em Assign flag value val to position pos. \item\end{CompactList}\item 
+void {\bf set\-Frozen} (int, bool)
+\begin{CompactList}\small\item\em Mark flag at pos as frozen. \item\end{CompactList}\item 
+void {\bf set\-Del} (int, bool)
+\begin{CompactList}\small\item\em Mark flag at pos for deletion. \item\end{CompactList}\item 
+bool {\bf is\-Frozen} (int) const 
+\item 
+bool {\bf is\-Del} (int) const 
+\item 
+{\bf Flag} {\bf flag} (int) const 
+\item 
+{\bf Flag} {\bf operator[$\,$]} (int) const 
+\item 
+void {\bf nest\-Pos} (int, int[2]) const 
+\item 
+void {\bf set\-Rule\-State} (unsigned char)
+\item 
+void {\bf update\-Rekern} ()
+\item 
+int {\bf get\-Right\-Pos} (int)
+\begin{CompactList}\small\item\em Finds the right nested subtree of a subtree, making sure to ignore flagged elements. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf flag\-Update\-Neighbours} (int)
+\begin{CompactList}\small\item\em Set the flag to freeze \& delete at a position and update its neighbours' neighbours to skip it. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf \_\-size}
+\item 
+{\bf Neighbours} $\ast$ {\bf \_\-neis}
+\begin{CompactList}\small\item\em Size of the table. \item\end{CompactList}\item 
+{\bf Flag} $\ast$ {\bf \_\-flags}
+\begin{CompactList}\small\item\em Table of left and right neighbour positions. \item\end{CompactList}\item 
+const {\bf UPTree}$<$ T $>$ $\ast$ {\bf \_\-tree}
+\begin{CompactList}\small\item\em Table of flags. \item\end{CompactList}\item 
+const {\bf Bracket\-Table}$<$ T $>$ $\ast$ {\bf \_\-btable}
+\begin{CompactList}\small\item\em Corresponding tree. \item\end{CompactList}\item 
+int {\bf \_\-tri\-Pos} [3]
+\begin{CompactList}\small\item\em Brackettable of \_\-tree. \item\end{CompactList}\item 
+unsigned char {\bf \_\-rule\-State}
+\begin{CompactList}\small\item\em Position of trifurcation subtrees in FLAGGED tree. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+std::ostream \& {\bf operator} (std::ostream \&, const {\bf Flag\-Table}$<$ T $>$ \&)
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf Flag}
+\begin{CompactList}\small\item\em {\bf Flag}{\rm (p.\,\pageref{structFlagTable_1_1Flag})} can specify if a given node is marked as frozen and/or marked for deletion. \item\end{CompactList}\item 
+struct {\bf Neighbours}
+\begin{CompactList}\small\item\em Offset the next unflagged neighbour to the left and right of a position. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Flag\-Table$<$ T $>$}
+
+This class keeps track of a boolean flag for each element of a tree string. 
+
+Tt also allows immediate access to the next unflagged neighbour in the string (on the left or right) side. Note that flagging a leaf also flags a corresponding bracket pair. This table is used in conjunction with the cherry table to perform Rule 1 in linear time. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FlagTable@{Flag\-Table}!FlagTable@{FlagTable}}
+\index{FlagTable@{FlagTable}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$ T $>$::{\bf Flag\-Table} ()}\label{classFlagTable_a0}
+
+
+\index{FlagTable@{Flag\-Table}!FlagTable@{FlagTable}}
+\index{FlagTable@{FlagTable}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$ T $>$::{\bf Flag\-Table} (int {\em size})}\label{classFlagTable_a1}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]Size of table to create. \end{description}
+\end{Desc}
+\index{FlagTable@{Flag\-Table}!~FlagTable@{$\sim$FlagTable}}
+\index{~FlagTable@{$\sim$FlagTable}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$ T $>$::$\sim${\bf Flag\-Table} ()}\label{classFlagTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{FlagTable@{Flag\-Table}!cherryPos@{cherryPos}}
+\index{cherryPos@{cherryPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::cherry\-Pos (int {\em pos}) const}\label{classFlagTable_a9}
+
+
+Find the position of the cherry neighbour of the leaf at position pos in the tree, ignoring all flagged nodes. 
+
+\begin{Desc}
+\item[Returns:]Position of cherry neighbour of -1 if it does not exist. \end{Desc}
+\index{FlagTable@{Flag\-Table}!copy@{copy}}
+\index{copy@{copy}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::copy (const {\bf Flag\-Table}$<$ T $>$ \& {\em ftable}, const int $\ast$ {\em lookup})}\label{classFlagTable_a6}
+
+
+Copy the flags from a tree with a different topology. 
+
+This is acccomplisehd by reflagging each leaf that was flagged for deletion along with its brackets. Frozen leaves are kept frozen without touching brackets. {\bf update\-Rekern()}{\rm (p.\,\pageref{classFlagTable_a20})} may have to be called again. \index{FlagTable@{Flag\-Table}!flag@{flag}}
+\index{flag@{flag}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$ T $>$::{\bf Flag} {\bf Flag\-Table}$<$ T $>$::flag (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a16}
+
+
+\begin{Desc}
+\item[Returns:]Boolean flag value at position pos. \end{Desc}
+\index{FlagTable@{Flag\-Table}!flagLeaf@{flagLeaf}}
+\index{flagLeaf@{flagLeaf}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::flag\-Leaf (int {\em pos})}\label{classFlagTable_a10}
+
+
+{\bf Flag}{\rm (p.\,\pageref{structFlagTable_1_1Flag})} a leaf at position pos. 
+
+The structure is then updated to reflect a tree from which this leaf has been deleted. This means that an edge (pair of brackets) is also flagged and all left/right neighbours are updated to skip the flagged nodes. Finally, the start positions of the trifurcation subtrees are updated. Positions are flagged as both freeze and delete. Fine-tuning is done manually using the set methods. \index{FlagTable@{Flag\-Table}!flagUpdateNeighbours@{flagUpdateNeighbours}}
+\index{flagUpdateNeighbours@{flagUpdateNeighbours}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::flag\-Update\-Neighbours (int {\em pos})\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_b0}
+
+
+Set the flag to freeze \& delete at a position and update its neighbours' neighbours to skip it. 
+
+\index{FlagTable@{Flag\-Table}!getRightPos@{getRightPos}}
+\index{getRightPos@{getRightPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::get\-Right\-Pos (int {\em pos})}\label{classFlagTable_a21}
+
+
+Finds the right nested subtree of a subtree, making sure to ignore flagged elements. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of the leftbracket of the subtree \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]position of the right subtree of the input subtree \end{Desc}
+\index{FlagTable@{Flag\-Table}!isDel@{isDel}}
+\index{isDel@{isDel}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Flag\-Table}$<$ T $>$::is\-Del (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a15}
+
+
+\begin{Desc}
+\item[Returns:]true if position pos is marked for deletion \end{Desc}
+\index{FlagTable@{Flag\-Table}!isFrozen@{isFrozen}}
+\index{isFrozen@{isFrozen}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Flag\-Table}$<$ T $>$::is\-Frozen (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a14}
+
+
+\begin{Desc}
+\item[Returns:]true if position pos is marked as frozen \end{Desc}
+\index{FlagTable@{Flag\-Table}!leftPos@{leftPos}}
+\index{leftPos@{leftPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::left\-Pos (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a7}
+
+
+\begin{Desc}
+\item[Returns:]Position of next unflagged neighbour to the left of pos. \end{Desc}
+\index{FlagTable@{Flag\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classFlagTable_a5}
+
+
+Load a tree and compute the cherry position of all leaves. 
+
+Tree to load  Brackettable corresponding to tree. \index{FlagTable@{Flag\-Table}!nestPos@{nestPos}}
+\index{nestPos@{nestPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::nest\-Pos (int {\em pos}, int {\em nest}[2]) const}\label{classFlagTable_a18}
+
+
+\index{FlagTable@{Flag\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$ T $>$::{\bf Flag} {\bf Flag\-Table}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a17}
+
+
+\begin{Desc}
+\item[Returns:]Boolean flag value at position pos. \end{Desc}
+\index{FlagTable@{Flag\-Table}!resize@{resize}}
+\index{resize@{resize}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::resize (int {\em size})}\label{classFlagTable_a3}
+
+
+Resize table if necessary. 
+
+\index{FlagTable@{Flag\-Table}!rightPos@{rightPos}}
+\index{rightPos@{rightPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::right\-Pos (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a8}
+
+
+\begin{Desc}
+\item[Returns:]Position of next unflagged neighbour to the right of pos. \end{Desc}
+\index{FlagTable@{Flag\-Table}!setAll@{setAll}}
+\index{setAll@{setAll}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::set\-All (bool {\em del}, bool {\em freeze})\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a4}
+
+
+Set all flags in the table. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em val}]Value to assign to all flags. \end{description}
+\end{Desc}
+\index{FlagTable@{Flag\-Table}!setDel@{setDel}}
+\index{setDel@{setDel}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::set\-Del (int {\em pos}, bool {\em val})\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a13}
+
+
+Mark flag at pos for deletion. 
+
+\index{FlagTable@{Flag\-Table}!setFlag@{setFlag}}
+\index{setFlag@{setFlag}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::set\-Flag (int {\em pos}, {\bf Flag} {\em val})\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a11}
+
+
+Assign flag value val to position pos. 
+
+\index{FlagTable@{Flag\-Table}!setFrozen@{setFrozen}}
+\index{setFrozen@{setFrozen}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::set\-Frozen (int {\em pos}, bool {\em val})\hspace{0.3cm}{\tt  [inline]}}\label{classFlagTable_a12}
+
+
+Mark flag at pos as frozen. 
+
+\index{FlagTable@{Flag\-Table}!setRuleState@{setRuleState}}
+\index{setRuleState@{setRuleState}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::set\-Rule\-State (unsigned {\em char})}\label{classFlagTable_a19}
+
+
+\index{FlagTable@{Flag\-Table}!updateRekern@{updateRekern}}
+\index{updateRekern@{updateRekern}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Flag\-Table}$<$ T $>$::update\-Rekern ()}\label{classFlagTable_a20}
+
+
+
+
+\subsection{Friends And Related Function Documentation}
+\index{FlagTable@{Flag\-Table}!operator@{operator}}
+\index{operator@{operator}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::ostream\& operator (std::ostream \&, const {\bf Flag\-Table}$<$ T $>$ \&)\hspace{0.3cm}{\tt  [friend]}}\label{classFlagTable_n0}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{FlagTable@{Flag\-Table}!_btable@{\_\-btable}}
+\index{_btable@{\_\-btable}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Bracket\-Table}$<$T$>$$\ast$ {\bf Flag\-Table}$<$ T $>$::{\bf \_\-btable}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p4}
+
+
+Corresponding tree. 
+
+\index{FlagTable@{Flag\-Table}!_flags@{\_\-flags}}
+\index{_flags@{\_\-flags}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag}$\ast$ {\bf Flag\-Table}$<$ T $>$::{\bf \_\-flags}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p2}
+
+
+Table of left and right neighbour positions. 
+
+\index{FlagTable@{Flag\-Table}!_neis@{\_\-neis}}
+\index{_neis@{\_\-neis}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Neighbours}$\ast$ {\bf Flag\-Table}$<$ T $>$::{\bf \_\-neis}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p1}
+
+
+Size of the table. 
+
+\index{FlagTable@{Flag\-Table}!_ruleState@{\_\-ruleState}}
+\index{_ruleState@{\_\-ruleState}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ unsigned char {\bf Flag\-Table}$<$ T $>$::{\bf \_\-rule\-State}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p6}
+
+
+Position of trifurcation subtrees in FLAGGED tree. 
+
+\index{FlagTable@{Flag\-Table}!_size@{\_\-size}}
+\index{_size@{\_\-size}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p0}
+
+
+\index{FlagTable@{Flag\-Table}!_tree@{\_\-tree}}
+\index{_tree@{\_\-tree}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf UPTree}$<$T$>$$\ast$ {\bf Flag\-Table}$<$ T $>$::{\bf \_\-tree}\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p3}
+
+
+Table of flags. 
+
+\index{FlagTable@{Flag\-Table}!_triPos@{\_\-triPos}}
+\index{_triPos@{\_\-triPos}!FlagTable@{Flag\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Flag\-Table}$<$ T $>$::{\bf \_\-tri\-Pos}[3]\hspace{0.3cm}{\tt  [protected]}}\label{classFlagTable_p5}
+
+
+Brackettable of \_\-tree. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf flagtable.h}\item 
+{\bf flagtable\_\-impl.h}\end{CompactItemize}

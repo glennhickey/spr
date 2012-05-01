@@ -1,0 +1,51 @@
+\section{treetok.h File Reference}
+\label{treetok_8h}\index{treetok.h@{treetok.h}}
+{\tt \#include $<$iostream$>$}\par
+{\tt \#include $<$cassert$>$}\par
+{\tt \#include \char`\"{}treetok\_\-impl.h\char`\"{}}\par
+\subsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum {\bf TTYPE} \{ {\bf LB} =  0, 
+{\bf RB}, 
+{\bf LEAF}
+ \}
+\begin{CompactList}\small\item\em The three possible types of a tree token. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+template$<$class T$>$ std::ostream \& {\bf operator$<$$<$} (std::ostream \&, const {\bf Tree\-Tok}$<$ T $>$)
+\begin{CompactList}\small\item\em Print token to a stream. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\index{treetok.h@{treetok.h}!TTYPE@{TTYPE}}
+\index{TTYPE@{TTYPE}!treetok.h@{treetok.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}enum {\bf TTYPE}}\label{treetok_8h_a4}
+
+
+The three possible types of a tree token. 
+
+\begin{Desc}
+\item[Enumeration values: ]\par
+\begin{description}
+\index{LB@{LB}!treetok.h@{treetok.h}}\index{treetok.h@{treetok.h}!LB@{LB}}\item[{\em 
+LB\label{treetok_8h_a4a0}
+}]\index{RB@{RB}!treetok.h@{treetok.h}}\index{treetok.h@{treetok.h}!RB@{RB}}\item[{\em 
+RB\label{treetok_8h_a4a1}
+}]\index{LEAF@{LEAF}!treetok.h@{treetok.h}}\index{treetok.h@{treetok.h}!LEAF@{LEAF}}\item[{\em 
+LEAF\label{treetok_8h_a4a2}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Function Documentation}
+\index{treetok.h@{treetok.h}!operator<<@{operator$<$$<$}}
+\index{operator<<@{operator$<$$<$}!treetok.h@{treetok.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::ostream\& operator$<$$<$ (std::ostream \& {\em os}, const {\bf Tree\-Tok}$<$ T $>$ {\em tok})}\label{treetok_8h_a3}
+
+
+Print token to a stream. 
+
+Flag value is not displayed. 

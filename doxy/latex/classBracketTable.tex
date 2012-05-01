@@ -1,0 +1,221 @@
+\section{Bracket\-Table$<$ T $>$ Class Template Reference}
+\label{classBracketTable}\index{BracketTable@{BracketTable}}
+The brackettable stores some information from the tree strings for quick lookup: For each bracket, the offeset of its matching bracket is stored.  
+
+
+{\tt \#include $<$brackettable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Bracket\-Table} ()
+\item 
+{\bf Bracket\-Table} (int)
+\item 
+{\bf $\sim$Bracket\-Table} ()
+\item 
+void {\bf resize} (int)
+\begin{CompactList}\small\item\em Resize the table if necessary. \item\end{CompactList}\item 
+int {\bf get\-Size} () const 
+\begin{CompactList}\small\item\em Return size of the table. \item\end{CompactList}\item 
+int {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Create a table corresponding to a given tree. \item\end{CompactList}\item 
+int {\bf load\-Subtree} (const {\bf UPTree}$<$ T $>$ \&, int, int)
+\begin{CompactList}\small\item\em Load a subtree into the table. \item\end{CompactList}\item 
+const {\bf Subtree\-Rec}$<$ T $>$ $\ast$ {\bf get\-Table} () const 
+\begin{CompactList}\small\item\em Return a const reference to the entire table contents. \item\end{CompactList}\item 
+{\bf Subtree\-Rec}$<$ T $>$ \& {\bf operator[$\,$]} (int)
+\begin{CompactList}\small\item\em Get a reference to the table record corresponding to a particular offset. \item\end{CompactList}\item 
+const {\bf Subtree\-Rec}$<$ T $>$ \& {\bf operator[$\,$]} (int) const 
+\begin{CompactList}\small\item\em Get a const reference to the table record corresponding to a particular offset. \item\end{CompactList}\item 
+const {\bf Subtree\-Rec}$<$ T $>$ \& {\bf at} (int) const 
+\begin{CompactList}\small\item\em Get a const reference to the table record corresponding to a particular offset. \item\end{CompactList}\item 
+int {\bf get\-Tri\-Pos} (int) const 
+\begin{CompactList}\small\item\em Get the trifurcation number of the subtree containing the token at a specified position. \item\end{CompactList}\item 
+void {\bf get\-Tri\-Pos} (int[3]) const 
+\begin{CompactList}\small\item\em Get a copy of the start positions of each of the 3 subtrees corresponding to the trifurcation. \item\end{CompactList}\item 
+const int $\ast$ {\bf get\-Tri\-Pos} () const 
+\begin{CompactList}\small\item\em Get the start positions of each of the 3 subtrees corresponding to the trifurcation. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::stack$<$ T $>$ {\bf \_\-stack}
+\item 
+{\bf Subtree\-Rec}$<$ T $>$ $\ast$ {\bf \_\-table}
+\begin{CompactList}\small\item\em General purpose stack. I should change T to int. \item\end{CompactList}\item 
+int {\bf \_\-tab\-Size}
+\begin{CompactList}\small\item\em The actual table structure which is just an array. \item\end{CompactList}\item 
+int {\bf \_\-tri\-Pos} [3]
+\begin{CompactList}\small\item\em Size of the table. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Bracket\-Table$<$ T $>$}
+
+The brackettable stores some information from the tree strings for quick lookup: For each bracket, the offeset of its matching bracket is stored. 
+
+For each pair of matching brackets, the position of the corresponding bifurcation as well as the minimum leaf label value contained in each subtree is stored. Finally, the offset of the start position of each trifurcation in the string is stored. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{BracketTable@{Bracket\-Table}!BracketTable@{BracketTable}}
+\index{BracketTable@{BracketTable}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$ T $>$::{\bf Bracket\-Table} ()}\label{classBracketTable_a0}
+
+
+\index{BracketTable@{Bracket\-Table}!BracketTable@{BracketTable}}
+\index{BracketTable@{BracketTable}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$ T $>$::{\bf Bracket\-Table} (int {\em size})}\label{classBracketTable_a1}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]Size of table to create. Note that this is total number of nodes, not number of leaves. \end{description}
+\end{Desc}
+\index{BracketTable@{Bracket\-Table}!~BracketTable@{$\sim$BracketTable}}
+\index{~BracketTable@{$\sim$BracketTable}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$ T $>$::$\sim${\bf Bracket\-Table} ()}\label{classBracketTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{BracketTable@{Bracket\-Table}!at@{at}}
+\index{at@{at}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Subtree\-Rec}$<$ T $>$ \& {\bf Bracket\-Table}$<$ T $>$::at (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a10}
+
+
+Get a const reference to the table record corresponding to a particular offset. 
+
+Easier to use on pointers than oeprator[]. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of desired record. \end{description}
+\end{Desc}
+\index{BracketTable@{Bracket\-Table}!getSize@{getSize}}
+\index{getSize@{getSize}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::get\-Size () const}\label{classBracketTable_a4}
+
+
+Return size of the table. 
+
+\index{BracketTable@{Bracket\-Table}!getTable@{getTable}}
+\index{getTable@{getTable}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Subtree\-Rec}$<$ T $>$ $\ast$ {\bf Bracket\-Table}$<$ T $>$::get\-Table () const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a7}
+
+
+Return a const reference to the entire table contents. 
+
+\index{BracketTable@{Bracket\-Table}!getTriPos@{getTriPos}}
+\index{getTriPos@{getTriPos}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const int $\ast$ {\bf Bracket\-Table}$<$ T $>$::get\-Tri\-Pos () const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a13}
+
+
+Get the start positions of each of the 3 subtrees corresponding to the trifurcation. 
+
+\index{BracketTable@{Bracket\-Table}!getTriPos@{getTriPos}}
+\index{getTriPos@{getTriPos}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Bracket\-Table}$<$ T $>$::get\-Tri\-Pos (int {\em tripos}[3]) const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a12}
+
+
+Get a copy of the start positions of each of the 3 subtrees corresponding to the trifurcation. 
+
+\index{BracketTable@{Bracket\-Table}!getTriPos@{getTriPos}}
+\index{getTriPos@{getTriPos}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::get\-Tri\-Pos (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a11}
+
+
+Get the trifurcation number of the subtree containing the token at a specified position. 
+
+\index{BracketTable@{Bracket\-Table}!loadSubtree@{loadSubtree}}
+\index{loadSubtree@{loadSubtree}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::load\-Subtree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em pos}, int {\em num})}\label{classBracketTable_a6}
+
+
+Load a subtree into the table. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tree}]Input tree \item[{\em pos}]Start position of subtree  trifurcation number corresponding to this tree (0,1,2) \end{description}
+\end{Desc}
+\index{BracketTable@{Bracket\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree})}\label{classBracketTable_a5}
+
+
+Create a table corresponding to a given tree. 
+
+\index{BracketTable@{Bracket\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Subtree\-Rec}$<$ T $>$ \& {\bf Bracket\-Table}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a9}
+
+
+Get a const reference to the table record corresponding to a particular offset. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of desired record. \end{description}
+\end{Desc}
+\index{BracketTable@{Bracket\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Subtree\-Rec}$<$ T $>$ \& {\bf Bracket\-Table}$<$ T $>$::operator[$\,$] (int {\em pos})\hspace{0.3cm}{\tt  [inline]}}\label{classBracketTable_a8}
+
+
+Get a reference to the table record corresponding to a particular offset. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of desired record. \end{description}
+\end{Desc}
+\index{BracketTable@{Bracket\-Table}!resize@{resize}}
+\index{resize@{resize}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Bracket\-Table}$<$ T $>$::resize (int {\em size})}\label{classBracketTable_a3}
+
+
+Resize the table if necessary. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]New size for table. \end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{BracketTable@{Bracket\-Table}!_stack@{\_\-stack}}
+\index{_stack@{\_\-stack}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::stack$<$T$>$ {\bf Bracket\-Table}$<$ T $>$::{\bf \_\-stack}\hspace{0.3cm}{\tt  [protected]}}\label{classBracketTable_p0}
+
+
+\index{BracketTable@{Bracket\-Table}!_table@{\_\-table}}
+\index{_table@{\_\-table}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Subtree\-Rec}$<$T$>$$\ast$ {\bf Bracket\-Table}$<$ T $>$::{\bf \_\-table}\hspace{0.3cm}{\tt  [protected]}}\label{classBracketTable_p1}
+
+
+General purpose stack. I should change T to int. 
+
+\index{BracketTable@{Bracket\-Table}!_tabSize@{\_\-tabSize}}
+\index{_tabSize@{\_\-tabSize}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::{\bf \_\-tab\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classBracketTable_p2}
+
+
+The actual table structure which is just an array. 
+
+\index{BracketTable@{Bracket\-Table}!_triPos@{\_\-triPos}}
+\index{_triPos@{\_\-triPos}!BracketTable@{Bracket\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bracket\-Table}$<$ T $>$::{\bf \_\-tri\-Pos}[3]\hspace{0.3cm}{\tt  [protected]}}\label{classBracketTable_p3}
+
+
+Size of the table. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf brackettable.h}\item 
+{\bf brackettable\_\-impl.h}\end{CompactItemize}

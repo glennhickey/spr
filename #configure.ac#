@@ -1,0 +1,56 @@
+# Copyright (C) 2005 G. Hickey <hickey@cs.dal.ca>
+#  
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without 
+# modifications, as long as this notice is preserved.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+AC_INIT([spr],
+        [0.0.1],
+        [Glenn Hickey hickey@cs.dal.ca],
+        [spr])
+AC_CONFIG_AUX_DIR(config)
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE([dist-bzip2])
+
+LF_CONFIGURE_CC
+LF_CONFIGURE_CXX
+LF_HOST_TYPE
+LF_SET_WARNINGS
+AC_PROG_RANLIB
+AC_PROG_CXX
+AC_CONFIG_FILES([
+   Makefile
+   README
+   doc/Makefile
+   m4/Makefile
+   src/Makefile
+s])
+
+# check for libcov
+#AC_ARG_WITH(libcov,
+#        AC_HELP_STRING([--with-libcov=DIR],[libcov was installed in DIR (headers in $DIR/include/cov, library in $DIR/lib)]),
+#        [with_libcov=$withval],
+#        [with_libcov="no"])
+#if test "$with_libcov" != "no"; then
+#        CPPFLAGS="-I${with_libcov}/include $CPPFLAGS"
+#        LDFLAGS="-L${with_libcov}/lib $LDFLAGS"
+# some default values where i usually keep my owkring libcov:
+#else
+#		  CPPFLAGS="-I/home/hickey/code/phylo/libcov/include $CPPFLAGS"
+#        LDFLAGS="-L/home/hickey/code/phylo/libcov/lib $LDFLAGS"
+#fi
+
+#ACX_COV
+#if test "$COV_LIB"
+#then
+#	LIBS="${COV_LIB} ${LIBS}"
+#else
+#    AC_MSG_ERROR([libcov not found])
+#fi
+
+
+AC_OUTPUT

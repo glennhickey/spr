@@ -1,0 +1,398 @@
+\section{SPRSearch$<$ T $>$ Class Template Reference}
+\label{classSPRSearch}\index{SPRSearch@{SPRSearch}}
+Breadth first search of SPR-neighbour graph.  
+
+
+{\tt \#include $<$sprsearch.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef {\bf CVector}$<$ {\bf UPTree}$<$ T $>$ $>$ {\bf Tree\-Pool}
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf SPRSearch} ({\bf Tree\-Manager}$<$ T $>$ \&, {\bf Tree\-Cache}$<$ T $>$ \&, unsigned char)
+\begin{CompactList}\small\item\em Create an SPR search. \item\end{CompactList}\item 
+{\bf $\sim$SPRSearch} ()
+\item 
+void {\bf set\-Start\-Tree} (const {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Add a copy of the start tree to the pool and update the cache. \item\end{CompactList}\item 
+void {\bf set\-End\-Tree} (const {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Set the end tree. \item\end{CompactList}\item 
+bool {\bf iterate} ()
+\begin{CompactList}\small\item\em Perform one iteration of the search. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+size\_\-t {\bf \_\-nni\-Count}
+\begin{CompactList}\small\item\em Current iteration. \item\end{CompactList}\item 
+size\_\-t {\bf \_\-spr\-Count}
+\begin{CompactList}\small\item\em NNI neighbours processed (DEBUG ONLY). \item\end{CompactList}\item 
+size\_\-t {\bf \_\-count}
+\begin{CompactList}\small\item\em SPR neighbours processed (DEBUG ONLY). \item\end{CompactList}\item 
+size\_\-t {\bf \_\-cache\-Hits}
+\begin{CompactList}\small\item\em Number of unique trees visited. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+bool {\bf evaluate\-NNI} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Visit all the (2n-6) NNI neighbours of a tree. \item\end{CompactList}\item 
+bool {\bf evaluate\-SPR} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Visit all the SPR neighbours that ARE NOT NNI neighbours: ie there are at least 2 edges between the cut edge and regraft edge. \item\end{CompactList}\item 
+void {\bf swap\-Copy} (const {\bf UPTree}$<$ T $>$ \&, {\bf UPTree}$<$ T $>$ \&, int[2], int[2])
+\begin{CompactList}\small\item\em Copies src into dest while swapping the two subtrees corresponding to the ranges specified by sub1 and sub2. \item\end{CompactList}\item 
+void {\bf spr\-Copy} (const {\bf UPTree}$<$ T $>$ \&, {\bf UPTree}$<$ T $>$ \&, int, int, const {\bf Bracket\-Table}$<$ T $>$ \&, const {\bf Flag\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Perform a single spr operation on src tree placing the resulting tree in dest. \item\end{CompactList}\item 
+bool {\bf update\-Cache} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Search for tree in the cache. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Pool} $\ast$ {\bf \_\-pool1}
+\item 
+{\bf Tree\-Pool} $\ast$ {\bf \_\-pool2}
+\begin{CompactList}\small\item\em Unique trees obtained in the previous iteration. \item\end{CompactList}\item 
+{\bf Tree\-Pool} {\bf \_\-p1}
+\begin{CompactList}\small\item\em Unique trees obtained in the present iteration. \item\end{CompactList}\item 
+{\bf Tree\-Pool} {\bf \_\-p2}
+\begin{CompactList}\small\item\em A pool of trees. \item\end{CompactList}\item 
+{\bf Tree\-Manager}$<$ T $>$ \& {\bf \_\-man}
+\begin{CompactList}\small\item\em A pool of trees. \item\end{CompactList}\item 
+{\bf Validator}$<$ T $>$ {\bf \_\-valid}
+\begin{CompactList}\small\item\em Tree manager used to create new trees. \item\end{CompactList}\item 
+{\bf Kernelizor}$<$ T $>$ {\bf \_\-kern}
+\begin{CompactList}\small\item\em {\bf Validator}{\rm (p.\,\pageref{classValidator})} used to reorder and retrifurcate. \item\end{CompactList}\item 
+{\bf Tree\-Cache}$<$ T $>$ \& {\bf \_\-cache}
+\begin{CompactList}\small\item\em {\bf Kernelizor}{\rm (p.\,\pageref{classKernelizor})} used for rekernelization. \item\end{CompactList}\item 
+{\bf UPTree}$<$ T $>$ {\bf \_\-spr\-Neighbour}
+\begin{CompactList}\small\item\em Tree cache to test for duplicates. \item\end{CompactList}\item 
+{\bf UPTree}$<$ T $>$ {\bf \_\-tree\-Buf1}
+\begin{CompactList}\small\item\em A reference to the neighbour currently analazyed. \item\end{CompactList}\item 
+{\bf UPTree}$<$ T $>$ {\bf \_\-tree\-Buf2}
+\begin{CompactList}\small\item\em General purpose temporary tree. \item\end{CompactList}\item 
+const {\bf Bracket\-Table}$<$ T $>$ $\ast$ {\bf \_\-btable1}
+\begin{CompactList}\small\item\em General purpose tempomrary tree. \item\end{CompactList}\item 
+{\bf Bracket\-Table}$<$ T $>$ {\bf \_\-btable2}
+\begin{CompactList}\small\item\em Bracket Table of current tree. \item\end{CompactList}\item 
+const {\bf Flag\-Table}$<$ T $>$ $\ast$ {\bf \_\-ftable1}
+\begin{CompactList}\small\item\em Bracket Table of retrifurcated tree. \item\end{CompactList}\item 
+{\bf Flag\-Table}$<$ T $>$ {\bf \_\-ftable2}
+\begin{CompactList}\small\item\em Flag Table of current tree. \item\end{CompactList}\item 
+{\bf Spr\-Table}$<$ T $>$ {\bf \_\-spr\-Table1}
+\begin{CompactList}\small\item\em Flag Table of retrifurcated tree. \item\end{CompactList}\item 
+{\bf Spr\-Table}$<$ T $>$ {\bf \_\-spr\-Table2}
+\begin{CompactList}\small\item\em SPR edges of current tree. \item\end{CompactList}\item 
+{\bf Spr\-Helper}$<$ T $>$ {\bf \_\-spr\-Helper}
+\begin{CompactList}\small\item\em SPR edges of retrifurcated tree. \item\end{CompactList}\item 
+const int $\ast$ {\bf \_\-lookup1}
+\begin{CompactList}\small\item\em Lookup subtrees after retrifurcation. \item\end{CompactList}\item 
+unsigned char {\bf \_\-id}
+\begin{CompactList}\small\item\em Position - label map forresponding to \_\-btable1. \item\end{CompactList}\item 
+short {\bf \_\-iter}
+\begin{CompactList}\small\item\em ID of this class. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf SPRSearch} ()
+\begin{CompactList}\small\item\em Number of duplicate trees skipped. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class SPRSearch$<$ T $>$}
+
+Breadth first search of SPR-neighbour graph. 
+
+Each tree is checked against a cache. If the tree already exists in the cache, it is ignored unless it has been flagged as an end tree in which case the search terminates. The search works in iterations. Eeach successive call to iterate will evaluate trees of 1 distance greater from the start tree. 
+
+
+
+\subsection{Member Typedef Documentation}
+\index{SPRSearch@{SPRSearch}!TreePool@{TreePool}}
+\index{TreePool@{TreePool}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ typedef {\bf CVector}$<${\bf UPTree}$<$T$>$ $>$ {\bf SPRSearch}$<$ T $>$::{\bf Tree\-Pool}}\label{classSPRSearch_w0}
+
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SPRSearch@{SPRSearch}!SPRSearch@{SPRSearch}}
+\index{SPRSearch@{SPRSearch}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf SPRSearch}$<$ T $>$::{\bf SPRSearch} ({\bf Tree\-Manager}$<$ T $>$ \& {\em man}, {\bf Tree\-Cache}$<$ T $>$ \& {\em cache}, unsigned char {\em id})}\label{classSPRSearch_a0}
+
+
+Create an SPR search. 
+
+Note the default constructor is disabled \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em man}]Tree Manager used to create all trees \item[{\em cache}]Tree Cache \end{description}
+\end{Desc}
+\index{SPRSearch@{SPRSearch}!~SPRSearch@{$\sim$SPRSearch}}
+\index{~SPRSearch@{$\sim$SPRSearch}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf SPRSearch}$<$ T $>$::$\sim${\bf SPRSearch} ()}\label{classSPRSearch_a1}
+
+
+\index{SPRSearch@{SPRSearch}!SPRSearch@{SPRSearch}}
+\index{SPRSearch@{SPRSearch}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf SPRSearch}$<$ T $>$::{\bf SPRSearch} ()\hspace{0.3cm}{\tt  [private]}}\label{classSPRSearch_d0}
+
+
+Number of duplicate trees skipped. 
+
+
+
+\subsection{Member Function Documentation}
+\index{SPRSearch@{SPRSearch}!evaluateNNI@{evaluateNNI}}
+\index{evaluateNNI@{evaluateNNI}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf SPRSearch}$<$ T $>$::evaluate\-NNI ({\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_b0}
+
+
+Visit all the (2n-6) NNI neighbours of a tree. 
+
+This is a subset of the SPR neighbours and processed separately for counting purposes. (see proof of Theorem 2.1 in Allen and Steel). \index{SPRSearch@{SPRSearch}!evaluateSPR@{evaluateSPR}}
+\index{evaluateSPR@{evaluateSPR}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf SPRSearch}$<$ T $>$::evaluate\-SPR ({\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_b1}
+
+
+Visit all the SPR neighbours that ARE NOT NNI neighbours: ie there are at least 2 edges between the cut edge and regraft edge. 
+
+These edges are located with the SPR table. \index{SPRSearch@{SPRSearch}!iterate@{iterate}}
+\index{iterate@{iterate}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf SPRSearch}$<$ T $>$::iterate ()}\label{classSPRSearch_a4}
+
+
+Perform one iteration of the search. 
+
+All unique neighbours of trees in the current pool are created and added to a pool for the next iteration. Non-unique neighbours are skipped except if their cache flag identifies as an endtree or from a different search, in which case the search terminates. \begin{Desc}
+\item[Returns:]true if the search terminates of false otherwise \end{Desc}
+\index{SPRSearch@{SPRSearch}!setEndTree@{setEndTree}}
+\index{setEndTree@{setEndTree}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf SPRSearch}$<$ T $>$::set\-End\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em t2})}\label{classSPRSearch_a3}
+
+
+Set the end tree. 
+
+A copy will be used both to check if the search has been completed and for rekernelization at step. \index{SPRSearch@{SPRSearch}!setStartTree@{setStartTree}}
+\index{setStartTree@{setStartTree}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf SPRSearch}$<$ T $>$::set\-Start\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em t1})}\label{classSPRSearch_a2}
+
+
+Add a copy of the start tree to the pool and update the cache. 
+
+\index{SPRSearch@{SPRSearch}!sprCopy@{sprCopy}}
+\index{sprCopy@{sprCopy}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf SPRSearch}$<$ T $>$::spr\-Copy (const {\bf UPTree}$<$ T $>$ \& {\em src}, {\bf UPTree}$<$ T $>$ \& {\em dest}, int {\em src\-Pos}, int {\em dest\-Pos}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable}, const {\bf Flag\-Table}$<$ T $>$ \& {\em ftable})\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_b3}
+
+
+Perform a single spr operation on src tree placing the resulting tree in dest. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]Source tree \item[{\em dest}]Destination tree \item[{\em src\-Pos}]Position of subtree to prune (in source) \item[{\em dest\-Pos}]Position of subtree to regraft (in source) \item[{\em btable}]Brackettable for source tree. \end{description}
+\end{Desc}
+\index{SPRSearch@{SPRSearch}!swapCopy@{swapCopy}}
+\index{swapCopy@{swapCopy}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf SPRSearch}$<$ T $>$::swap\-Copy (const {\bf UPTree}$<$ T $>$ \& {\em src}, {\bf UPTree}$<$ T $>$ \& {\em dest}, int {\em sub1}[2], int {\em sub2}[2])\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_b2}
+
+
+Copies src into dest while swapping the two subtrees corresponding to the ranges specified by sub1 and sub2. 
+
+In other words, performs a single NNI operation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em src}]Source tree \item[{\em dest}]Destination tree \item[{\em sub1}]Positions of first and last elements of subtree to swap with sub2 \item[{\em sub2}]Positions of first and last elements of subtree to swap with sub1 \end{description}
+\end{Desc}
+\index{SPRSearch@{SPRSearch}!updateCache@{updateCache}}
+\index{updateCache@{updateCache}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf SPRSearch}$<$ T $>$::update\-Cache ({\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_b4}
+
+
+Search for tree in the cache. 
+
+If it does not exist, add it to the cache and to the pool for the next iteration. \begin{Desc}
+\item[Returns:]true if tree corresponds to the end tree. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{SPRSearch@{SPRSearch}!_btable1@{\_\-btable1}}
+\index{_btable1@{\_\-btable1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Bracket\-Table}$<$T$>$$\ast$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-btable1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p11}
+
+
+General purpose tempomrary tree. 
+
+\index{SPRSearch@{SPRSearch}!_btable2@{\_\-btable2}}
+\index{_btable2@{\_\-btable2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-btable2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p12}
+
+
+Bracket Table of current tree. 
+
+\index{SPRSearch@{SPRSearch}!_cache@{\_\-cache}}
+\index{_cache@{\_\-cache}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$T$>$\& {\bf SPRSearch}$<$ T $>$::{\bf \_\-cache}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p7}
+
+
+{\bf Kernelizor}{\rm (p.\,\pageref{classKernelizor})} used for rekernelization. 
+
+\index{SPRSearch@{SPRSearch}!_cacheHits@{\_\-cacheHits}}
+\index{_cacheHits@{\_\-cacheHits}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf SPRSearch}$<$ T $>$::{\bf \_\-cache\-Hits}}\label{classSPRSearch_o3}
+
+
+Number of unique trees visited. 
+
+\index{SPRSearch@{SPRSearch}!_count@{\_\-count}}
+\index{_count@{\_\-count}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf SPRSearch}$<$ T $>$::{\bf \_\-count}}\label{classSPRSearch_o2}
+
+
+SPR neighbours processed (DEBUG ONLY). 
+
+\index{SPRSearch@{SPRSearch}!_ftable1@{\_\-ftable1}}
+\index{_ftable1@{\_\-ftable1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Flag\-Table}$<$T$>$$\ast$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-ftable1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p13}
+
+
+Bracket Table of retrifurcated tree. 
+
+\index{SPRSearch@{SPRSearch}!_ftable2@{\_\-ftable2}}
+\index{_ftable2@{\_\-ftable2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-ftable2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p14}
+
+
+Flag Table of current tree. 
+
+\index{SPRSearch@{SPRSearch}!_id@{\_\-id}}
+\index{_id@{\_\-id}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ unsigned char {\bf SPRSearch}$<$ T $>$::{\bf \_\-id}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p19}
+
+
+Position - label map forresponding to \_\-btable1. 
+
+\index{SPRSearch@{SPRSearch}!_iter@{\_\-iter}}
+\index{_iter@{\_\-iter}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ short {\bf SPRSearch}$<$ T $>$::{\bf \_\-iter}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p20}
+
+
+ID of this class. 
+
+Trees in the cache that do not share this id are considered End trees. (0 or 1) \index{SPRSearch@{SPRSearch}!_kern@{\_\-kern}}
+\index{_kern@{\_\-kern}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Kernelizor}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-kern}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p6}
+
+
+{\bf Validator}{\rm (p.\,\pageref{classValidator})} used to reorder and retrifurcate. 
+
+\index{SPRSearch@{SPRSearch}!_lookup1@{\_\-lookup1}}
+\index{_lookup1@{\_\-lookup1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const int$\ast$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-lookup1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p18}
+
+
+Lookup subtrees after retrifurcation. 
+
+\index{SPRSearch@{SPRSearch}!_man@{\_\-man}}
+\index{_man@{\_\-man}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$T$>$\& {\bf SPRSearch}$<$ T $>$::{\bf \_\-man}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p4}
+
+
+A pool of trees. 
+
+\index{SPRSearch@{SPRSearch}!_nniCount@{\_\-nniCount}}
+\index{_nniCount@{\_\-nniCount}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf SPRSearch}$<$ T $>$::{\bf \_\-nni\-Count}}\label{classSPRSearch_o0}
+
+
+Current iteration. 
+
+\index{SPRSearch@{SPRSearch}!_p1@{\_\-p1}}
+\index{_p1@{\_\-p1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Pool} {\bf SPRSearch}$<$ T $>$::{\bf \_\-p1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p2}
+
+
+Unique trees obtained in the present iteration. 
+
+\index{SPRSearch@{SPRSearch}!_p2@{\_\-p2}}
+\index{_p2@{\_\-p2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Pool} {\bf SPRSearch}$<$ T $>$::{\bf \_\-p2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p3}
+
+
+A pool of trees. 
+
+\index{SPRSearch@{SPRSearch}!_pool1@{\_\-pool1}}
+\index{_pool1@{\_\-pool1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Pool}$\ast$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-pool1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p0}
+
+
+\index{SPRSearch@{SPRSearch}!_pool2@{\_\-pool2}}
+\index{_pool2@{\_\-pool2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Pool}$\ast$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-pool2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p1}
+
+
+Unique trees obtained in the previous iteration. 
+
+\index{SPRSearch@{SPRSearch}!_sprCount@{\_\-sprCount}}
+\index{_sprCount@{\_\-sprCount}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf SPRSearch}$<$ T $>$::{\bf \_\-spr\-Count}}\label{classSPRSearch_o1}
+
+
+NNI neighbours processed (DEBUG ONLY). 
+
+\index{SPRSearch@{SPRSearch}!_sprHelper@{\_\-sprHelper}}
+\index{_sprHelper@{\_\-sprHelper}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Helper}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-spr\-Helper}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p17}
+
+
+SPR edges of retrifurcated tree. 
+
+\index{SPRSearch@{SPRSearch}!_sprNeighbour@{\_\-sprNeighbour}}
+\index{_sprNeighbour@{\_\-sprNeighbour}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf UPTree}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-spr\-Neighbour}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p8}
+
+
+Tree cache to test for duplicates. 
+
+\index{SPRSearch@{SPRSearch}!_sprTable1@{\_\-sprTable1}}
+\index{_sprTable1@{\_\-sprTable1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Table}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-spr\-Table1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p15}
+
+
+Flag Table of retrifurcated tree. 
+
+\index{SPRSearch@{SPRSearch}!_sprTable2@{\_\-sprTable2}}
+\index{_sprTable2@{\_\-sprTable2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Table}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-spr\-Table2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p16}
+
+
+SPR edges of current tree. 
+
+\index{SPRSearch@{SPRSearch}!_treeBuf1@{\_\-treeBuf1}}
+\index{_treeBuf1@{\_\-treeBuf1}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf UPTree}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-tree\-Buf1}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p9}
+
+
+A reference to the neighbour currently analazyed. 
+
+\index{SPRSearch@{SPRSearch}!_treeBuf2@{\_\-treeBuf2}}
+\index{_treeBuf2@{\_\-treeBuf2}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf UPTree}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-tree\-Buf2}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p10}
+
+
+General purpose temporary tree. 
+
+\index{SPRSearch@{SPRSearch}!_valid@{\_\-valid}}
+\index{_valid@{\_\-valid}!SPRSearch@{SPRSearch}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$T$>$ {\bf SPRSearch}$<$ T $>$::{\bf \_\-valid}\hspace{0.3cm}{\tt  [protected]}}\label{classSPRSearch_p5}
+
+
+Tree manager used to create new trees. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf sprsearch.h}\item 
+{\bf sprsearch\_\-impl.h}\end{CompactItemize}

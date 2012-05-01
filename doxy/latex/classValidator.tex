@@ -1,0 +1,186 @@
+\section{Validator$<$ T $>$ Class Template Reference}
+\label{classValidator}\index{Validator@{Validator}}
+Validator class is responsible for verifying that a tree is properly formed.  
+
+
+{\tt \#include $<$validator.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Validator} (int n)
+\item 
+{\bf $\sim$Validator} ()
+\item 
+bool {\bf valid\-Tree} (const {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Ensure that the tree is composed of a 3 valid binary subtrees. \item\end{CompactList}\item 
+int {\bf subtree\-Size} (const {\bf UPTree}$<$ T $>$ \&, int)
+\begin{CompactList}\small\item\em returns size of subtree in number of tokens if valid. \item\end{CompactList}\item 
+int {\bf reorder} (const {\bf UPTree}$<$ T $>$ \&, {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Ensure that for each internal node of the tree, the minimum leaf label in its left subtree is smaller than the minimum leaf label in its right subtree. \item\end{CompactList}\item 
+int {\bf retrifurcate} (const {\bf UPTree}$<$ T $>$ \&, {\bf UPTree}$<$ T $>$ \&, T)
+\begin{CompactList}\small\item\em Retrifurcation of an unrooted tree is analagous to rerooting a rooted tree. \item\end{CompactList}\item 
+const {\bf Bracket\-Table}$<$ T $>$ \& {\bf get\-BTable} () const 
+\begin{CompactList}\small\item\em Return a reference to the bracket table as it is sometimes reused in the kernelization. \item\end{CompactList}\item 
+int {\bf get\-Size} () const 
+\begin{CompactList}\small\item\em Get the size of the bracket table. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+int {\bf reorder\-Subtree} (const {\bf UPTree}$<$ T $>$ \&, int, {\bf UPTree}$<$ T $>$ \&, int)
+\begin{CompactList}\small\item\em Reorder a subtree to ensure that at each internal node, the minimum leaf label in the left subtree is smaller than the minimum leaf label in the right subtree. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf Bracket\-Table}$<$ T $>$ {\bf \_\-table}
+\begin{CompactList}\small\item\em Table of matching brackets used to store each bifurcation for quick lookup. \item\end{CompactList}\item 
+std::stack$<$ T $>$ {\bf \_\-stack}
+\begin{CompactList}\small\item\em General purpose stack used mostly for counting brackets and tree traversals. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Validator} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Validator$<$ T $>$}
+
+Validator class is responsible for verifying that a tree is properly formed. 
+
+It checks that it is binary, unrooted, and that all the brackets match. Also provides functionality to ensure that the tree is ordered consistently to provide a unique representation for each unique topology.
+
+\begin{Desc}
+\item[Author:]Glenn Hickey \end{Desc}
+
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Validator@{Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$ T $>$::{\bf Validator} (int {\em size})}\label{classValidator_a0}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]Size of table. Must be large enough to contain each token of the tree being processed. \end{description}
+\end{Desc}
+\index{Validator@{Validator}!~Validator@{$\sim$Validator}}
+\index{~Validator@{$\sim$Validator}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$ T $>$::$\sim${\bf Validator} ()}\label{classValidator_a1}
+
+
+\index{Validator@{Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$ T $>$::{\bf Validator} ()\hspace{0.3cm}{\tt  [private]}}\label{classValidator_d0}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{Validator@{Validator}!getBTable@{getBTable}}
+\index{getBTable@{getBTable}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Bracket\-Table}$<$ T $>$ \& {\bf Validator}$<$ T $>$::get\-BTable () const\hspace{0.3cm}{\tt  [inline]}}\label{classValidator_a6}
+
+
+Return a reference to the bracket table as it is sometimes reused in the kernelization. 
+
+\index{Validator@{Validator}!getSize@{getSize}}
+\index{getSize@{getSize}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Validator}$<$ T $>$::get\-Size () const\hspace{0.3cm}{\tt  [inline]}}\label{classValidator_a7}
+
+
+Get the size of the bracket table. 
+
+Corresponds to the maximum size of a tree that can be validated. \index{Validator@{Validator}!reorder@{reorder}}
+\index{reorder@{reorder}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Validator}$<$ T $>$::reorder (const {\bf UPTree}$<$ T $>$ \& {\em itree}, {\bf UPTree}$<$ T $>$ \& {\em otree})}\label{classValidator_a4}
+
+
+Ensure that for each internal node of the tree, the minimum leaf label in its left subtree is smaller than the minimum leaf label in its right subtree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em itree}]Tree to reorder \item[{\em otree}]Tree to which the reordered result is written \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of subtrees that had to be reordered. \end{Desc}
+\index{Validator@{Validator}!reorderSubtree@{reorderSubtree}}
+\index{reorderSubtree@{reorderSubtree}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Validator}$<$ T $>$::reorder\-Subtree (const {\bf UPTree}$<$ T $>$ \& {\em itree}, int {\em pos}, {\bf UPTree}$<$ T $>$ \& {\em otree}, int {\em opos})\hspace{0.3cm}{\tt  [protected]}}\label{classValidator_b0}
+
+
+Reorder a subtree to ensure that at each internal node, the minimum leaf label in the left subtree is smaller than the minimum leaf label in the right subtree. 
+
+Ordering all subtrees in this fashion is essential for a unique representation required by the cache. This is done in a single scan. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em itree}]Input tree. \item[{\em pos}]Starting position of subtree in input tree to reorder. \item[{\em otree}]Output tree. \item[{\em opos}]Starting position of subtree in output tree. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Number of subtrees that were out of order. \end{Desc}
+\index{Validator@{Validator}!retrifurcate@{retrifurcate}}
+\index{retrifurcate@{retrifurcate}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Validator}$<$ T $>$::retrifurcate (const {\bf UPTree}$<$ T $>$ \& {\em itree}, {\bf UPTree}$<$ T $>$ \& {\em otree}, T {\em root})}\label{classValidator_a5}
+
+
+Retrifurcation of an unrooted tree is analagous to rerooting a rooted tree. 
+
+In order to ensure a unique representation, we enforce that the leaf with label=0 correspond to the first subtree of the trifurcation. The two subtrees rooted at leaf 0's neighbours will correspond to the second and third trifurcations.
+
+Example: Input: ((4,5),((0,3),2),(1,6)) Output: (0,3,(((4,5),2),(6,1)))
+
+This is a rather involved routine that will hopefuly be fully described somewhere in the thesis.
+
+Note that it must be used in conjunction (ie before) reorder to generate a unique representation \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em itree}]Input tree \item[{\em otree}]Tree in which retrifurcated itree will be copied \item[{\em root}]Label of 'root' that will be set as first trifurcation. I use 0 \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if input is already retrifurcated or 1 if work had to be done \end{Desc}
+\index{Validator@{Validator}!subtreeSize@{subtreeSize}}
+\index{subtreeSize@{subtreeSize}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Validator}$<$ T $>$::subtree\-Size (const {\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em pos})}\label{classValidator_a3}
+
+
+returns size of subtree in number of tokens if valid. 
+
+0 otherwise Checks if it starts with a (. Checks that all brackets match. Checks that it is strictly bifurcating. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tree}]Input tree \item[{\em pos}]Starting position of subtree to analyze \end{description}
+\end{Desc}
+\index{Validator@{Validator}!validTree@{validTree}}
+\index{validTree@{validTree}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Validator}$<$ T $>$::valid\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree})}\label{classValidator_a2}
+
+
+Ensure that the tree is composed of a 3 valid binary subtrees. 
+
+Useful mostly for testing input. 
+
+\subsection{Member Data Documentation}
+\index{Validator@{Validator}!_stack@{\_\-stack}}
+\index{_stack@{\_\-stack}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::stack$<$T$>$ {\bf Validator}$<$ T $>$::{\bf \_\-stack}\hspace{0.3cm}{\tt  [protected]}}\label{classValidator_p1}
+
+
+General purpose stack used mostly for counting brackets and tree traversals. 
+
+\index{Validator@{Validator}!_table@{\_\-table}}
+\index{_table@{\_\-table}!Validator@{Validator}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$T$>$ {\bf Validator}$<$ T $>$::{\bf \_\-table}\hspace{0.3cm}{\tt  [protected]}}\label{classValidator_p0}
+
+
+Table of matching brackets used to store each bifurcation for quick lookup. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf validator.h}\item 
+{\bf validator\_\-impl.h}\end{CompactItemize}

@@ -1,0 +1,78 @@
+\section{Extract\-Subtree$<$ T, U $>$ Class Template Reference}
+\label{classExtractSubtree}\index{ExtractSubtree@{ExtractSubtree}}
+{\tt \#include $<$extractsubtree.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Extract\-Subtree} ()
+\item 
+{\bf $\sim$Extract\-Subtree} ()
+\item 
+bool {\bf extract} (const {\bf UPTree}$<$ U $>$ \&, const std::vector$<$ std::string $>$ \&, const {\bf UPTree}$<$ T $>$ \&, const std::vector$<$ std::string $>$ \&, std::string \&)
+\begin{CompactList}\small\item\em Removes all leaves from supertree that are not present in reftree and copies the results into otree. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf Bracket\-Table}$<$ U $>$ {\bf \_\-btable}
+\item 
+{\bf Flag\-Table}$<$ U $>$ {\bf \_\-ftable}
+\item 
+std::set$<$ std::string $>$ {\bf \_\-set}
+\end{CompactItemize}
+\subsubsection*{template$<$class T, class U$>$ class Extract\-Subtree$<$ T, U $>$}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{ExtractSubtree@{Extract\-Subtree}!ExtractSubtree@{ExtractSubtree}}
+\index{ExtractSubtree@{ExtractSubtree}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ {\bf Extract\-Subtree}$<$ T, U $>$::{\bf Extract\-Subtree} ()}\label{classExtractSubtree_a0}
+
+
+\index{ExtractSubtree@{Extract\-Subtree}!~ExtractSubtree@{$\sim$ExtractSubtree}}
+\index{~ExtractSubtree@{$\sim$ExtractSubtree}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ {\bf Extract\-Subtree}$<$ T, U $>$::$\sim${\bf Extract\-Subtree} ()}\label{classExtractSubtree_a1}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{ExtractSubtree@{Extract\-Subtree}!extract@{extract}}
+\index{extract@{extract}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ bool {\bf Extract\-Subtree}$<$ T, U $>$::extract (const {\bf UPTree}$<$ U $>$ \& {\em super\-Tree}, const std::vector$<$ std::string $>$ \& {\em super\-Lookup}, const {\bf UPTree}$<$ T $>$ \& {\em ref\-Tree}, const std::vector$<$ std::string $>$ \& {\em ref\-Lookup}, std::string \& {\em otree})}\label{classExtractSubtree_a2}
+
+
+Removes all leaves from supertree that are not present in reftree and copies the results into otree. 
+
+Note that each leaf removal is accompanied by the corresponding edge contraction. It assumed that input trees are numbered from 0 to numleaves-1. The lookup tables are used to access original values. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em super\-Tree}]The supertree to extract from \item[{\em super\-Lookup}]Name map for supertree \item[{\em ref\-Tree}]The tree whose leafset is to be extracted \item[{\em ref\-Lookup}]Name map for reference tree \item[{\em otree}]The output tree in string format \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if subtree of supertree with leaf set of reftree is successfully extracted. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{ExtractSubtree@{Extract\-Subtree}!_btable@{\_\-btable}}
+\index{_btable@{\_\-btable}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ {\bf Bracket\-Table}$<$U$>$ {\bf Extract\-Subtree}$<$ T, U $>$::{\bf \_\-btable}\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSubtree_p0}
+
+
+\index{ExtractSubtree@{Extract\-Subtree}!_ftable@{\_\-ftable}}
+\index{_ftable@{\_\-ftable}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ {\bf Flag\-Table}$<$U$>$ {\bf Extract\-Subtree}$<$ T, U $>$::{\bf \_\-ftable}\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSubtree_p1}
+
+
+\index{ExtractSubtree@{Extract\-Subtree}!_set@{\_\-set}}
+\index{_set@{\_\-set}!ExtractSubtree@{Extract\-Subtree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T, class U$>$ std::set$<$std::string$>$ {\bf Extract\-Subtree}$<$ T, U $>$::{\bf \_\-set}\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSubtree_p2}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf extractsubtree.h}\item 
+{\bf extractsubtree\_\-impl.h}\end{CompactItemize}

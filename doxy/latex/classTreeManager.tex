@@ -1,0 +1,192 @@
+\section{Tree\-Manager$<$ T $>$ Class Template Reference}
+\label{classTreeManager}\index{TreeManager@{TreeManager}}
+Stores a given number of trees in a contiguous chunk of memory.  
+
+
+{\tt \#include $<$treemanager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Manager} (size\_\-t, size\_\-t)
+\item 
+{\bf $\sim$Tree\-Manager} ()
+\item 
+{\bf Tree\-Tok}$<$ T $>$ {\bf operator[$\,$]} (size\_\-t) const 
+\item 
+{\bf Tree\-Tok}$<$ T $>$ \& {\bf operator[$\,$]} (size\_\-t)
+\item 
+size\_\-t {\bf tree\-Size} () const 
+\item 
+size\_\-t {\bf num\-Leaves} () const 
+\item 
+size\_\-t {\bf size} () const 
+\item 
+void {\bf reset} ()
+\begin{CompactList}\small\item\em Erase all the trees (but don't deallocate). \item\end{CompactList}\item 
+void {\bf create\-Tree} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Creates a new tree and reserves the appropriate memory, resizing if the capacity is exceeded  Output tree. \item\end{CompactList}\item 
+void {\bf get\-Tree} (size\_\-t, {\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Request a tree at a given offset and update tree to point to it. \item\end{CompactList}\item 
+void {\bf delete\-Last} ()
+\begin{CompactList}\small\item\em Delete (unrserve space corresponding to) the tree most recently created with {\bf create\-Tree()}{\rm (p.\,\pageref{classTreeManager_a8})}. \item\end{CompactList}\item 
+bool {\bf compare} (size\_\-t, size\_\-t)
+\begin{CompactList}\small\item\em Compare two trees for equality, disregarding flag bit. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Tok}$<$ T $>$ $\ast$ {\bf \_\-block}
+\item 
+size\_\-t {\bf \_\-tree\-Size}
+\begin{CompactList}\small\item\em Address of memory block. \item\end{CompactList}\item 
+size\_\-t {\bf \_\-size}
+\begin{CompactList}\small\item\em Size of each tree of block in \#tokens. \item\end{CompactList}\item 
+size\_\-t {\bf \_\-cap}
+\begin{CompactList}\small\item\em \# trees currently in manager \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Manager} ()
+\begin{CompactList}\small\item\em capacity in \# trees \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Tree\-Manager$<$ T $>$}
+
+Stores a given number of trees in a contiguous chunk of memory. 
+
+Resized with realloc if the current capacity is exceeded. realloc is used instead of new as it can potentially increase the block without requiring a copy of the entire thing (and uptrees don't have constructors so this isn't a problem). 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TreeManager@{Tree\-Manager}!TreeManager@{TreeManager}}
+\index{TreeManager@{TreeManager}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$ T $>$::{\bf Tree\-Manager} (size\_\-t {\em num\-Leaves}, size\_\-t {\em num\-Trees})}\label{classTreeManager_a0}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em num\-Leaves}]Number of leaves per tree \item[{\em num\-Trees}]Number of trees to allocate initially. \end{description}
+\end{Desc}
+\index{TreeManager@{Tree\-Manager}!~TreeManager@{$\sim$TreeManager}}
+\index{~TreeManager@{$\sim$TreeManager}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$ T $>$::$\sim${\bf Tree\-Manager} ()}\label{classTreeManager_a1}
+
+
+\index{TreeManager@{Tree\-Manager}!TreeManager@{TreeManager}}
+\index{TreeManager@{TreeManager}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$ T $>$::{\bf Tree\-Manager} ()\hspace{0.3cm}{\tt  [private]}}\label{classTreeManager_d0}
+
+
+capacity in \# trees 
+
+
+
+\subsection{Member Function Documentation}
+\index{TreeManager@{Tree\-Manager}!compare@{compare}}
+\index{compare@{compare}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Tree\-Manager}$<$ T $>$::compare (size\_\-t {\em idx1}, size\_\-t {\em idx2})}\label{classTreeManager_a11}
+
+
+Compare two trees for equality, disregarding flag bit. 
+
+Does this function really belong here? \index{TreeManager@{Tree\-Manager}!createTree@{createTree}}
+\index{createTree@{createTree}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Manager}$<$ T $>$::create\-Tree ({\bf UPTree}$<$ T $>$ \& {\em tree})}\label{classTreeManager_a8}
+
+
+Creates a new tree and reserves the appropriate memory, resizing if the capacity is exceeded  Output tree. 
+
+\index{TreeManager@{Tree\-Manager}!deleteLast@{deleteLast}}
+\index{deleteLast@{deleteLast}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Manager}$<$ T $>$::delete\-Last ()\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a10}
+
+
+Delete (unrserve space corresponding to) the tree most recently created with {\bf create\-Tree()}{\rm (p.\,\pageref{classTreeManager_a8})}. 
+
+\index{TreeManager@{Tree\-Manager}!getTree@{getTree}}
+\index{getTree@{getTree}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Manager}$<$ T $>$::get\-Tree (size\_\-t {\em index}, {\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a9}
+
+
+Request a tree at a given offset and update tree to point to it. 
+
+\index{TreeManager@{Tree\-Manager}!numLeaves@{numLeaves}}
+\index{numLeaves@{numLeaves}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::num\-Leaves () const\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a5}
+
+
+\begin{Desc}
+\item[Returns:]number of leaves in each tree in manager \end{Desc}
+\index{TreeManager@{Tree\-Manager}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Tok}$<$ T $>$ \& {\bf Tree\-Manager}$<$ T $>$::operator[$\,$] (size\_\-t {\em os})\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a3}
+
+
+\begin{Desc}
+\item[Returns:]reference to tree token at offset os \end{Desc}
+\index{TreeManager@{Tree\-Manager}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Tok}$<$ T $>$ {\bf Tree\-Manager}$<$ T $>$::operator[$\,$] (size\_\-t {\em os}) const\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a2}
+
+
+\begin{Desc}
+\item[Returns:]copy of tree token at offset os \end{Desc}
+\index{TreeManager@{Tree\-Manager}!reset@{reset}}
+\index{reset@{reset}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Manager}$<$ T $>$::reset ()}\label{classTreeManager_a7}
+
+
+Erase all the trees (but don't deallocate). 
+
+\index{TreeManager@{Tree\-Manager}!size@{size}}
+\index{size@{size}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::size () const\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a6}
+
+
+\begin{Desc}
+\item[Returns:]number of trees in manager \end{Desc}
+\index{TreeManager@{Tree\-Manager}!treeSize@{treeSize}}
+\index{treeSize@{treeSize}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::tree\-Size () const\hspace{0.3cm}{\tt  [inline]}}\label{classTreeManager_a4}
+
+
+\begin{Desc}
+\item[Returns:]size of each tree in manager. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{TreeManager@{Tree\-Manager}!_block@{\_\-block}}
+\index{_block@{\_\-block}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Tok}$<$T$>$$\ast$ {\bf Tree\-Manager}$<$ T $>$::{\bf \_\-block}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeManager_p0}
+
+
+\index{TreeManager@{Tree\-Manager}!_cap@{\_\-cap}}
+\index{_cap@{\_\-cap}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::{\bf \_\-cap}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeManager_p3}
+
+
+\# trees currently in manager 
+
+\index{TreeManager@{Tree\-Manager}!_size@{\_\-size}}
+\index{_size@{\_\-size}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeManager_p2}
+
+
+Size of each tree of block in \#tokens. 
+
+\index{TreeManager@{Tree\-Manager}!_treeSize@{\_\-treeSize}}
+\index{_treeSize@{\_\-treeSize}!TreeManager@{Tree\-Manager}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Manager}$<$ T $>$::{\bf \_\-tree\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeManager_p1}
+
+
+Address of memory block. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf treemanager.h}\item 
+{\bf treemanager\_\-impl.h}\end{CompactItemize}

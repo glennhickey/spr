@@ -1,0 +1,137 @@
+\section{UPTree$<$ T $>$ Struct Template Reference}
+\label{structUPTree}\index{UPTree@{UPTree}}
+Binary-array representation of an Unrooted Phylogenetic Tree.  
+
+
+{\tt \#include $<$uptree.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Tok}$<$ T $>$ \& {\bf operator[$\,$]} (int)
+\begin{CompactList}\small\item\em Return reference to a token in tree. \item\end{CompactList}\item 
+{\bf Tree\-Tok}$<$ T $>$ {\bf operator[$\,$]} (int) const 
+\begin{CompactList}\small\item\em Return copy of a token in tree. \item\end{CompactList}\item 
+void {\bf duplicate} (const {\bf UPTree} \&)
+\begin{CompactList}\small\item\em Duplicate another tree. \item\end{CompactList}\item 
+void {\bf strip\-Flags} ()
+\begin{CompactList}\small\item\em Set flags of all tokens in tree to 0/false. \item\end{CompactList}\item 
+int {\bf size} () const 
+\begin{CompactList}\small\item\em Get the size of the tree. \item\end{CompactList}\item 
+int {\bf get\-Pos} (T) const 
+\begin{CompactList}\small\item\em Search for a label in the tree and return its position. \item\end{CompactList}\item 
+size\_\-t {\bf capacity} () const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf \_\-os}
+\begin{CompactList}\small\item\em offset in tree manager \item\end{CompactList}\item 
+{\bf Tree\-Manager}$<$ T $>$ $\ast$ {\bf \_\-man}
+\begin{CompactList}\small\item\em reference to tree manager that contains the actual data \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ struct UPTree$<$ T $>$}
+
+Binary-array representation of an Unrooted Phylogenetic Tree. 
+
+This structure stores an offset and reference to a tree manager where the actual data is stored.
+
+Question: Is the \_\-man pointer really necessary? It may be worth it to use a global variable in order to shrink our pool size by a word. 
+
+
+
+\subsection{Member Function Documentation}
+\index{UPTree@{UPTree}!capacity@{capacity}}
+\index{capacity@{capacity}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf UPTree}$<$ T $>$::capacity () const}\label{structUPTree_a6}
+
+
+\index{UPTree@{UPTree}!duplicate@{duplicate}}
+\index{duplicate@{duplicate}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf UPTree}$<$ T $>$::duplicate (const {\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a2}
+
+
+Duplicate another tree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tree}]Tree to duplicate \end{description}
+\end{Desc}
+\index{UPTree@{UPTree}!getPos@{getPos}}
+\index{getPos@{getPos}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf UPTree}$<$ T $>$::get\-Pos (T {\em label}) const\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a5}
+
+
+Search for a label in the tree and return its position. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em label}]Leaf label to search for \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]position of label or -1 if it is not found. \end{Desc}
+\index{UPTree@{UPTree}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Tok}$<$ T $>$ {\bf UPTree}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a1}
+
+
+Return copy of a token in tree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of token to get. \end{description}
+\end{Desc}
+\index{UPTree@{UPTree}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Tok}$<$ T $>$ \& {\bf UPTree}$<$ T $>$::operator[$\,$] (int {\em pos})\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a0}
+
+
+Return reference to a token in tree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of token to get. \end{description}
+\end{Desc}
+\index{UPTree@{UPTree}!size@{size}}
+\index{size@{size}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf UPTree}$<$ T $>$::size () const\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a4}
+
+
+Get the size of the tree. 
+
+Note that this is the number of tokens available for this tree and does not correspond to the actual contents. Also note, that this is the total number of tokens and not the number of leaves. \index{UPTree@{UPTree}!stripFlags@{stripFlags}}
+\index{stripFlags@{stripFlags}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf UPTree}$<$ T $>$::strip\-Flags ()\hspace{0.3cm}{\tt  [inline]}}\label{structUPTree_a3}
+
+
+Set flags of all tokens in tree to 0/false. 
+
+
+
+\subsection{Member Data Documentation}
+\index{UPTree@{UPTree}!_man@{\_\-man}}
+\index{_man@{\_\-man}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$T$>$$\ast$ {\bf UPTree}$<$ T $>$::{\bf \_\-man}}\label{structUPTree_o1}
+
+
+reference to tree manager that contains the actual data 
+
+\index{UPTree@{UPTree}!_os@{\_\-os}}
+\index{_os@{\_\-os}!UPTree@{UPTree}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf UPTree}$<$ T $>$::{\bf \_\-os}}\label{structUPTree_o0}
+
+
+offset in tree manager 
+
+
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf uptree.h}\item 
+{\bf uptree\_\-impl.h}\end{CompactItemize}

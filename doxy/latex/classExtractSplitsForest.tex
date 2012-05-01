@@ -1,0 +1,89 @@
+\section{Extract\-Splits\-Forest Class Reference}
+\label{classExtractSplitsForest}\index{ExtractSplitsForest@{ExtractSplitsForest}}
+{\tt \#include $<$extractsplitsforest.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Extract\-Splits\-Forest} ()
+\item 
+{\bf $\sim$Extract\-Splits\-Forest} ()
+\item 
+int {\bf extract} (const std::string \&, const std::string \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&)
+\begin{CompactList}\small\item\em Find the common splits forest for a pair of trees. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+int {\bf get\-Splits} (const std::vector$<$ std::string $>$ \&, std::set$<$ {\bf Split} $\ast$, {\bf Split\-PLess} $>$ \&)
+\begin{CompactList}\small\item\em Extract the splits from a tree. \item\end{CompactList}\item 
+bool {\bf break\-LCS} (const std::vector$<$ std::string $>$ \&, const std::vector$<$ std::string $>$ \&tree2, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&)
+\item 
+void {\bf split\-Tree} (const std::vector$<$ std::string $>$ \&, const {\bf Split} \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::vector$<$ std::string $>$ {\bf \_\-temp}
+\item 
+int {\bf \_\-next\-Label}
+\end{CompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!ExtractSplitsForest@{ExtractSplitsForest}}
+\index{ExtractSplitsForest@{ExtractSplitsForest}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Extract\-Splits\-Forest::Extract\-Splits\-Forest ()}\label{classExtractSplitsForest_a0}
+
+
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!~ExtractSplitsForest@{$\sim$ExtractSplitsForest}}
+\index{~ExtractSplitsForest@{$\sim$ExtractSplitsForest}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Extract\-Splits\-Forest::$\sim${\bf Extract\-Splits\-Forest} ()}\label{classExtractSplitsForest_a1}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!breakLCS@{breakLCS}}
+\index{breakLCS@{breakLCS}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}bool Extract\-Splits\-Forest::break\-LCS (const std::vector$<$ std::string $>$ \&, const std::vector$<$ std::string $>$ \& {\em tree2}, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&)\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSplitsForest_b1}
+
+
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!extract@{extract}}
+\index{extract@{extract}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Extract\-Splits\-Forest::extract (const std::string \& {\em t1}, const std::string \& {\em t2}, std::vector$<$ std::string $>$ \& {\em f1}, std::vector$<$ std::string $>$ \& {\em f2})}\label{classExtractSplitsForest_a2}
+
+
+Find the common splits forest for a pair of trees. 
+
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!getSplits@{getSplits}}
+\index{getSplits@{getSplits}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int Extract\-Splits\-Forest::get\-Splits (const std::vector$<$ std::string $>$ \& {\em tree}, std::set$<$ {\bf Split} $\ast$, {\bf Split\-PLess} $>$ \& {\em splitset})\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSplitsForest_b0}
+
+
+Extract the splits from a tree. 
+
+There should be one for each INTERNAL edge wich is n-3 or something. \index{ExtractSplitsForest@{Extract\-Splits\-Forest}!splitTree@{splitTree}}
+\index{splitTree@{splitTree}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Extract\-Splits\-Forest::split\-Tree (const std::vector$<$ std::string $>$ \&, const {\bf Split} \&, std::vector$<$ std::string $>$ \&, std::vector$<$ std::string $>$ \&)\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSplitsForest_b2}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!_nextLabel@{\_\-nextLabel}}
+\index{_nextLabel@{\_\-nextLabel}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}int {\bf Extract\-Splits\-Forest::\_\-next\-Label}\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSplitsForest_p1}
+
+
+\index{ExtractSplitsForest@{Extract\-Splits\-Forest}!_temp@{\_\-temp}}
+\index{_temp@{\_\-temp}!ExtractSplitsForest@{Extract\-Splits\-Forest}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$std::string$>$ {\bf Extract\-Splits\-Forest::\_\-temp}\hspace{0.3cm}{\tt  [protected]}}\label{classExtractSplitsForest_p0}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf extractsplitsforest.h}\item 
+{\bf extractsplitsforest.cpp}\item 
+{\bf extractsplitsforest\_\-impl.h}\end{CompactItemize}

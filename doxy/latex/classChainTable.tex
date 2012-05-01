@@ -1,0 +1,171 @@
+\section{Chain\-Table$<$ T $>$ Class Template Reference}
+\label{classChainTable}\index{ChainTable@{ChainTable}}
+Computes and stores the offsets of pendant leaves that are neighbours in a chain.  
+
+
+{\tt \#include $<$chaintable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Chain\-Table} ()
+\item 
+{\bf Chain\-Table} (int)
+\item 
+{\bf $\sim$Chain\-Table} ()
+\item 
+void {\bf resize} (int)
+\begin{CompactList}\small\item\em Resize the table if necessary. \item\end{CompactList}\item 
+int {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em For each leaf in the tree, find all its chain neighbours and store their positions in the table. \item\end{CompactList}\item 
+const {\bf NList} $\ast$ {\bf get\-Table} () const 
+\begin{CompactList}\small\item\em Return a const reference to the entire table. \item\end{CompactList}\item 
+void {\bf reset\-Neighbours} (int, const {\bf NList} \&)
+\begin{CompactList}\small\item\em Update the neighbour-list at a particular position. \item\end{CompactList}\item 
+void {\bf remove\-Neighbours} (int)
+\begin{CompactList}\small\item\em Set the number of neighbours to zero. \item\end{CompactList}\item 
+void {\bf remove\-From\-Neighbours} (int)
+\begin{CompactList}\small\item\em Remove a position from the neighbourlists of all its chain neighbours. \item\end{CompactList}\item 
+const {\bf NList} \& {\bf operator[$\,$]} (int) const 
+\begin{CompactList}\small\item\em Get a const reference to the neighbourlist of a position. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf \_\-size}
+\item 
+{\bf NList} $\ast$ {\bf \_\-ntable}
+\begin{CompactList}\small\item\em Size of the table. \item\end{CompactList}\item 
+std::stack$<$ int $>$ {\bf \_\-stack}
+\begin{CompactList}\small\item\em Array of neighbour lists. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf NList}
+\begin{CompactList}\small\item\em The chain neighbours of a leaf. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Chain\-Table$<$ T $>$}
+
+Computes and stores the offsets of pendant leaves that are neighbours in a chain. 
+
+The chain neighbours of a leaf L are all other leaves in the string that are separated from L by exactly 1 unmatched bracket. This corresponds to a graph theoretic distance of 3 between the vertices. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{ChainTable@{Chain\-Table}!ChainTable@{ChainTable}}
+\index{ChainTable@{ChainTable}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Chain\-Table}$<$ T $>$::{\bf Chain\-Table} ()}\label{classChainTable_a0}
+
+
+\index{ChainTable@{Chain\-Table}!ChainTable@{ChainTable}}
+\index{ChainTable@{ChainTable}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Chain\-Table}$<$ T $>$::{\bf Chain\-Table} (int {\em size})}\label{classChainTable_a1}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]Size of table to create. \end{description}
+\end{Desc}
+\index{ChainTable@{Chain\-Table}!~ChainTable@{$\sim$ChainTable}}
+\index{~ChainTable@{$\sim$ChainTable}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Chain\-Table}$<$ T $>$::$\sim${\bf Chain\-Table} ()}\label{classChainTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{ChainTable@{Chain\-Table}!getTable@{getTable}}
+\index{getTable@{getTable}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Chain\-Table}$<$ T $>$::{\bf NList} $\ast$ {\bf Chain\-Table}$<$ T $>$::get\-Table () const\hspace{0.3cm}{\tt  [inline]}}\label{classChainTable_a5}
+
+
+Return a const reference to the entire table. 
+
+\index{ChainTable@{Chain\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Chain\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classChainTable_a4}
+
+
+For each leaf in the tree, find all its chain neighbours and store their positions in the table. 
+
+Finding the chain neighbours, with the use of the brackettable is O(1) per leaf. Loading the whole table is O(n). \index{ChainTable@{Chain\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Chain\-Table}$<$ T $>$::{\bf NList} \& {\bf Chain\-Table}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classChainTable_a9}
+
+
+Get a const reference to the neighbourlist of a position. 
+
+\index{ChainTable@{Chain\-Table}!removeFromNeighbours@{removeFromNeighbours}}
+\index{removeFromNeighbours@{removeFromNeighbours}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Chain\-Table}$<$ T $>$::remove\-From\-Neighbours (int {\em pos})}\label{classChainTable_a8}
+
+
+Remove a position from the neighbourlists of all its chain neighbours. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position to remove. This position will no longer be in any neighbourlists in the table. \end{description}
+\end{Desc}
+\index{ChainTable@{Chain\-Table}!removeNeighbours@{removeNeighbours}}
+\index{removeNeighbours@{removeNeighbours}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Chain\-Table}$<$ T $>$::remove\-Neighbours (int {\em pos})\hspace{0.3cm}{\tt  [inline]}}\label{classChainTable_a7}
+
+
+Set the number of neighbours to zero. 
+
+Useful when we don't want to visit a node again. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position to modify. \end{description}
+\end{Desc}
+\index{ChainTable@{Chain\-Table}!resetNeighbours@{resetNeighbours}}
+\index{resetNeighbours@{resetNeighbours}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Chain\-Table}$<$ T $>$::reset\-Neighbours (int {\em pos}, const {\bf NList} \& {\em neighbours})\hspace{0.3cm}{\tt  [inline]}}\label{classChainTable_a6}
+
+
+Update the neighbour-list at a particular position. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position of list to update. (should correspond to a leaf's position) \item[{\em neighbours}]New list of neighbours to apply at pos. \end{description}
+\end{Desc}
+\index{ChainTable@{Chain\-Table}!resize@{resize}}
+\index{resize@{resize}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Chain\-Table}$<$ T $>$::resize (int {\em size})}\label{classChainTable_a3}
+
+
+Resize the table if necessary. 
+
+
+
+\subsection{Member Data Documentation}
+\index{ChainTable@{Chain\-Table}!_ntable@{\_\-ntable}}
+\index{_ntable@{\_\-ntable}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf NList}$\ast$ {\bf Chain\-Table}$<$ T $>$::{\bf \_\-ntable}\hspace{0.3cm}{\tt  [protected]}}\label{classChainTable_p1}
+
+
+Size of the table. 
+
+\index{ChainTable@{Chain\-Table}!_size@{\_\-size}}
+\index{_size@{\_\-size}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Chain\-Table}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classChainTable_p0}
+
+
+\index{ChainTable@{Chain\-Table}!_stack@{\_\-stack}}
+\index{_stack@{\_\-stack}!ChainTable@{Chain\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::stack$<$int$>$ {\bf Chain\-Table}$<$ T $>$::{\bf \_\-stack}\hspace{0.3cm}{\tt  [protected]}}\label{classChainTable_p2}
+
+
+Array of neighbour lists. 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf chaintable.h}\item 
+{\bf chaintable\_\-impl.h}\end{CompactItemize}

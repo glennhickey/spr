@@ -1,0 +1,312 @@
+\section{Kernelizor$<$ T $>$ Class Template Reference}
+\label{classKernelizor}\index{Kernelizor@{Kernelizor}}
+Kernelizes pairs of trees by flagging common subtrees and chains in accordance with Rule 1 and Rule 2.  
+
+
+{\tt \#include $<$kernelizor.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Kernelizor} ({\bf Tree\-Manager}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Construct the kernelizor. \item\end{CompactList}\item 
+{\bf $\sim$Kernelizor} ()
+\item 
+void {\bf set\-T1} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Set first tree of kernelization. \item\end{CompactList}\item 
+void {\bf set\-T2} ({\bf UPTree}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Set second tree of kernelization. \item\end{CompactList}\item 
+int {\bf kernelize} ()
+\begin{CompactList}\small\item\em Kernelize and return number of flagged leaves. \item\end{CompactList}\item 
+size\_\-t {\bf num\-Leaves} () const 
+\item 
+const {\bf Bracket\-Table}$<$ T $>$ \& {\bf get\-BTable} (int) const 
+\item 
+const {\bf Flag\-Table}$<$ T $>$ \& {\bf get\-FTable} (int) const 
+\item 
+const int $\ast$ {\bf get\-Lookup} (int) const 
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf load\-Tree} ({\bf UPTree}$<$ T $>$ \&, int)
+\begin{CompactList}\small\item\em Copy a reference of the tree into the slot corresponding to num and load all the relevant tables. \item\end{CompactList}\item 
+int {\bf rule1} ()
+\begin{CompactList}\small\item\em Flag all leaves but one in subtrees common to T1 and T2. \item\end{CompactList}\item 
+int {\bf rule2} ()
+\begin{CompactList}\small\item\em For each common chain c1,c2,c3...,ck in the (intermediate) trees, flag leaves c3,...,ck-1. \item\end{CompactList}\item 
+int {\bf chain\-Links} (T, T[2])
+\begin{CompactList}\small\item\em Use the chain tables to identify common chain neighbours of a leaf. \item\end{CompactList}\item 
+int {\bf flag\-Chain} (T, T)
+\begin{CompactList}\small\item\em Flag a common subchain in both trees. \item\end{CompactList}\item 
+void {\bf copy\-To\-Temp} ()
+\begin{CompactList}\small\item\em Copy the input trees (\_\-t[0] and \_\-t[1]) into the intermediate trees (\_\-t[2] and \_\-t[3]), ignoring flagged tokens. \item\end{CompactList}\item 
+void {\bf copy\-From\-Temp} ()
+\begin{CompactList}\small\item\em For every leaf flagged in the intermediate trees in Rule 2 but not flagged by Rule 1, flag in the original trees. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf UPTree}$<$ T $>$ {\bf \_\-t} [4]
+\item 
+{\bf Tree\-Manager}$<$ T $>$ $\ast$ {\bf \_\-man}
+\begin{CompactList}\small\item\em \_\-t[0] \& \_\-t[1] are the input trees \_\-t[2] \& \_\-t[3] are the above after Rule1 \item\end{CompactList}\item 
+size\_\-t {\bf \_\-num\-Leaves}
+\begin{CompactList}\small\item\em tree manager to create \_\-t[2] and \_\-t[3] \item\end{CompactList}\item 
+int {\bf \_\-temp\-Size}
+\begin{CompactList}\small\item\em number of leaves in input trees \item\end{CompactList}\item 
+int $\ast$ {\bf \_\-lookup} [4]
+\begin{CompactList}\small\item\em number of leaves after Rule1 \item\end{CompactList}\item 
+{\bf Bracket\-Table}$<$ T $>$ {\bf \_\-btable} [4]
+\begin{CompactList}\small\item\em map label to position in all 4 trees \item\end{CompactList}\item 
+{\bf Flag\-Table}$<$ T $>$ {\bf \_\-ftable} [4]
+\begin{CompactList}\small\item\em bracket information tables \item\end{CompactList}\item 
+{\bf Cherry\-Table}$<$ T $>$ {\bf \_\-cherry\-Table} [4]
+\begin{CompactList}\small\item\em flag tables \item\end{CompactList}\item 
+{\bf Chain\-Table}$<$ T $>$ {\bf \_\-chain\-Table} [4]
+\begin{CompactList}\small\item\em cherry tables for Rule 1 \item\end{CompactList}\item 
+std::queue$<$ int $>$ {\bf \_\-queue}
+\begin{CompactList}\small\item\em chain tables for Rule 2 \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Kernelizor} ()
+\begin{CompactList}\small\item\em queue used in rule 1 \item\end{CompactList}\end{CompactItemize}
+\subsection*{Friends}
+\begin{CompactItemize}
+\item 
+std::ostream \& {\bf operator} (std::ostream \&, {\bf Kernelizor}$<$ T $>$ \&)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Kernelizor$<$ T $>$}
+
+Kernelizes pairs of trees by flagging common subtrees and chains in accordance with Rule 1 and Rule 2. 
+
+The time complexity is linear. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Kernelizor@{Kernelizor}!Kernelizor@{Kernelizor}}
+\index{Kernelizor@{Kernelizor}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Kernelizor}$<$ T $>$::{\bf Kernelizor} ({\bf Tree\-Manager}$<$ T $>$ \& {\em man})}\label{classKernelizor_a0}
+
+
+Construct the kernelizor. 
+
+Note the default constructor is disabled. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em man}]Tree manager. Must correspond to manager of input trees. \end{description}
+\end{Desc}
+\index{Kernelizor@{Kernelizor}!~Kernelizor@{$\sim$Kernelizor}}
+\index{~Kernelizor@{$\sim$Kernelizor}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Kernelizor}$<$ T $>$::$\sim${\bf Kernelizor} ()}\label{classKernelizor_a1}
+
+
+\index{Kernelizor@{Kernelizor}!Kernelizor@{Kernelizor}}
+\index{Kernelizor@{Kernelizor}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Kernelizor}$<$ T $>$::{\bf Kernelizor} ()\hspace{0.3cm}{\tt  [private]}}\label{classKernelizor_d0}
+
+
+queue used in rule 1 
+
+
+
+\subsection{Member Function Documentation}
+\index{Kernelizor@{Kernelizor}!chainLinks@{chainLinks}}
+\index{chainLinks@{chainLinks}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::chain\-Links (T {\em label}, T {\em labels}[2])\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b3}
+
+
+Use the chain tables to identify common chain neighbours of a leaf. 
+
+There are at most two such neighbours. Note that common neighbours from different chains can be cherries in one of the trees and must not be flagged \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em label}]Input leaf label whose common links are to be searched for in both trees \item[{\em labels}]Output labels of the common chain neighbours if they exist \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]number of chain neighbours in labels. \end{Desc}
+\index{Kernelizor@{Kernelizor}!copyFromTemp@{copyFromTemp}}
+\index{copyFromTemp@{copyFromTemp}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Kernelizor}$<$ T $>$::copy\-From\-Temp ()\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b6}
+
+
+For every leaf flagged in the intermediate trees in Rule 2 but not flagged by Rule 1, flag in the original trees. 
+
+\index{Kernelizor@{Kernelizor}!copyToTemp@{copyToTemp}}
+\index{copyToTemp@{copyToTemp}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Kernelizor}$<$ T $>$::copy\-To\-Temp ()\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b5}
+
+
+Copy the input trees (\_\-t[0] and \_\-t[1]) into the intermediate trees (\_\-t[2] and \_\-t[3]), ignoring flagged tokens. 
+
+\index{Kernelizor@{Kernelizor}!flagChain@{flagChain}}
+\index{flagChain@{flagChain}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::flag\-Chain (T {\em label}, T {\em link})\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b4}
+
+
+Flag a common subchain in both trees. 
+
+Flagged leaves are removed from the chain tables so the never get visited again. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em label}]Label of first leaf in chain \item[{\em link}]Label of second leaf in chain \end{description}
+\end{Desc}
+\index{Kernelizor@{Kernelizor}!getBTable@{getBTable}}
+\index{getBTable@{getBTable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Bracket\-Table}$<$ T $>$ \& {\bf Kernelizor}$<$ T $>$::get\-BTable (int {\em num}) const\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a6}
+
+
+\begin{Desc}
+\item[Returns:]a reference to a bracket table corresponding to either t1, t2 or one of the two intermediate trees. \end{Desc}
+\index{Kernelizor@{Kernelizor}!getFTable@{getFTable}}
+\index{getFTable@{getFTable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Flag\-Table}$<$ T $>$ \& {\bf Kernelizor}$<$ T $>$::get\-FTable (int {\em num}) const\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a7}
+
+
+\begin{Desc}
+\item[Returns:]a reference to a flag table corresponding to either t1, t2 or one of the two intermediate trees. \end{Desc}
+\index{Kernelizor@{Kernelizor}!getLookup@{getLookup}}
+\index{getLookup@{getLookup}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const int $\ast$ {\bf Kernelizor}$<$ T $>$::get\-Lookup (int {\em num}) const\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a8}
+
+
+\begin{Desc}
+\item[Returns:]a reference to a lookup table corresponding to either t1, t2 or one of the two intermediate trees. Lookup table gives constant access to leaves by label. \end{Desc}
+\index{Kernelizor@{Kernelizor}!kernelize@{kernelize}}
+\index{kernelize@{kernelize}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::kernelize ()\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a4}
+
+
+Kernelize and return number of flagged leaves. 
+
+The trees are first processed using Rule 1. The results are then copied into intermediate trees (\_\-t[1] and \_\-t[2]), deleting flagged tokens. Common chains are then flagged ala Rule 2 in these intermeidate trees. The leaves corresponding to these chains are then flagged in the original trees. Throughout all this process, the flags were kept externally in \_\-ftable. At the very end, they are copied back into the trees. \index{Kernelizor@{Kernelizor}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Kernelizor}$<$ T $>$::load\-Tree ({\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em num})\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b0}
+
+
+Copy a reference of the tree into the slot corresponding to num and load all the relevant tables. 
+
+\index{Kernelizor@{Kernelizor}!numLeaves@{numLeaves}}
+\index{numLeaves@{numLeaves}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Kernelizor}$<$ T $>$::num\-Leaves () const\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a5}
+
+
+\begin{Desc}
+\item[Returns:]Number of leaves in the trees \end{Desc}
+\index{Kernelizor@{Kernelizor}!rule1@{rule1}}
+\index{rule1@{rule1}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::rule1 ()\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b1}
+
+
+Flag all leaves but one in subtrees common to T1 and T2. 
+
+This is done by repeatedly flagging common cherries (subtrees with 2 leaves) in linear time. \index{Kernelizor@{Kernelizor}!rule2@{rule2}}
+\index{rule2@{rule2}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::rule2 ()\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_b2}
+
+
+For each common chain c1,c2,c3...,ck in the (intermediate) trees, flag leaves c3,...,ck-1. 
+
+This is done by finding endpoints of common chains (leaves with a single common chain neighbour) and walking along the chains flagging as we go. \index{Kernelizor@{Kernelizor}!setT1@{setT1}}
+\index{setT1@{setT1}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Kernelizor}$<$ T $>$::set\-T1 ({\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a2}
+
+
+Set first tree of kernelization. 
+
+It will be flagged in place by the kernelization but the topology will be unaffected. \index{Kernelizor@{Kernelizor}!setT2@{setT2}}
+\index{setT2@{setT2}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Kernelizor}$<$ T $>$::set\-T2 ({\bf UPTree}$<$ T $>$ \& {\em tree})\hspace{0.3cm}{\tt  [inline]}}\label{classKernelizor_a3}
+
+
+Set second tree of kernelization. 
+
+It will be flagged in place by the kernelization but the topology will be unaffected. 
+
+\subsection{Friends And Related Function Documentation}
+\index{Kernelizor@{Kernelizor}!operator@{operator}}
+\index{operator@{operator}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::ostream\& operator (std::ostream \&, {\bf Kernelizor}$<$ T $>$ \&)\hspace{0.3cm}{\tt  [friend]}}\label{classKernelizor_n0}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{Kernelizor@{Kernelizor}!_btable@{\_\-btable}}
+\index{_btable@{\_\-btable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Bracket\-Table}$<$T$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-btable}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p5}
+
+
+map label to position in all 4 trees 
+
+\index{Kernelizor@{Kernelizor}!_chainTable@{\_\-chainTable}}
+\index{_chainTable@{\_\-chainTable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Chain\-Table}$<$T$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-chain\-Table}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p8}
+
+
+cherry tables for Rule 1 
+
+\index{Kernelizor@{Kernelizor}!_cherryTable@{\_\-cherryTable}}
+\index{_cherryTable@{\_\-cherryTable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Cherry\-Table}$<$T$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-cherry\-Table}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p7}
+
+
+flag tables 
+
+\index{Kernelizor@{Kernelizor}!_ftable@{\_\-ftable}}
+\index{_ftable@{\_\-ftable}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Flag\-Table}$<$T$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-ftable}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p6}
+
+
+bracket information tables 
+
+\index{Kernelizor@{Kernelizor}!_lookup@{\_\-lookup}}
+\index{_lookup@{\_\-lookup}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int$\ast$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-lookup}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p4}
+
+
+number of leaves after Rule1 
+
+\index{Kernelizor@{Kernelizor}!_man@{\_\-man}}
+\index{_man@{\_\-man}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$T$>$$\ast$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-man}\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p1}
+
+
+\_\-t[0] \& \_\-t[1] are the input trees \_\-t[2] \& \_\-t[3] are the above after Rule1 
+
+\index{Kernelizor@{Kernelizor}!_numLeaves@{\_\-numLeaves}}
+\index{_numLeaves@{\_\-numLeaves}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Kernelizor}$<$ T $>$::{\bf \_\-num\-Leaves}\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p2}
+
+
+tree manager to create \_\-t[2] and \_\-t[3] 
+
+\index{Kernelizor@{Kernelizor}!_queue@{\_\-queue}}
+\index{_queue@{\_\-queue}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::queue$<$int$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-queue}\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p9}
+
+
+chain tables for Rule 2 
+
+\index{Kernelizor@{Kernelizor}!_t@{\_\-t}}
+\index{_t@{\_\-t}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf UPTree}$<$T$>$ {\bf Kernelizor}$<$ T $>$::{\bf \_\-t}[4]\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p0}
+
+
+\index{Kernelizor@{Kernelizor}!_tempSize@{\_\-tempSize}}
+\index{_tempSize@{\_\-tempSize}!Kernelizor@{Kernelizor}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Kernelizor}$<$ T $>$::{\bf \_\-temp\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classKernelizor_p3}
+
+
+number of leaves in input trees 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf kernelizor.h}\item 
+{\bf kernelizor\_\-impl.h}\end{CompactItemize}

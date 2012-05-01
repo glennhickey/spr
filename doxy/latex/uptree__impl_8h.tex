@@ -1,0 +1,30 @@
+\section{uptree\_\-impl.h File Reference}
+\label{uptree__impl_8h}\index{uptree_impl.h@{uptree\_\-impl.h}}
+{\tt \#include $<$cassert$>$}\par
+{\tt \#include \char`\"{}treetok.h\char`\"{}}\par
+{\tt \#include \char`\"{}treemanager.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+template$<$class T$>$ std::ostream \& {\bf operator$<$$<$} (std::ostream \&os, const {\bf UPTree}$<$ T $>$ \&tree)
+\begin{CompactList}\small\item\em Print tree as Newick string to an output stream. \item\end{CompactList}\item 
+template$<$class T$>$ std::istream \& {\bf operator$>$$>$} (std::istream \&is, {\bf UPTree}$<$ T $>$ \&tree)
+\begin{CompactList}\small\item\em Read a Newick tree from a stream. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{uptree_impl.h@{uptree\_\-impl.h}!operator<<@{operator$<$$<$}}
+\index{operator<<@{operator$<$$<$}!uptree_impl.h@{uptree\_\-impl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::ostream\& operator$<$$<$ (std::ostream \& {\em os}, const {\bf UPTree}$<$ T $>$ \& {\em tree})}\label{uptree__impl_8h_a0}
+
+
+Print tree as Newick string to an output stream. 
+
+\index{uptree_impl.h@{uptree\_\-impl.h}!operator>>@{operator$>$$>$}}
+\index{operator>>@{operator$>$$>$}!uptree_impl.h@{uptree\_\-impl.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::istream\& operator$>$$>$ (std::istream \& {\em is}, {\bf UPTree}$<$ T $>$ \& {\em tree})}\label{uptree__impl_8h_a1}
+
+
+Read a Newick tree from a stream. 
+
+Note that this method does not support branch lengths or internal node labels so they must be stripped beforehand 

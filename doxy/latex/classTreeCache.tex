@@ -1,0 +1,189 @@
+\section{Tree\-Cache$<$ T $>$ Class Template Reference}
+\label{classTreeCache}\index{TreeCache@{TreeCache}}
+Hash table with chaining that stores to references to trees.  
+
+
+{\tt \#include $<$treecache.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Cache} (size\_\-t, {\bf Tree\-Manager}$<$ T $>$ $\ast$)
+\begin{CompactList}\small\item\em Create the cache. \item\end{CompactList}\item 
+{\bf $\sim$Tree\-Cache} ()
+\item 
+void {\bf reset} ()
+\begin{CompactList}\small\item\em Remove all elements from the table and reset statistics. \item\end{CompactList}\item 
+size\_\-t {\bf size} () const 
+\begin{CompactList}\small\item\em Returns the number of elements in the table. \item\end{CompactList}\item 
+{\bf Result} {\bf update} (const {\bf UPTree}$<$ T $>$ \&, size\_\-t, size\_\-t)
+\begin{CompactList}\small\item\em If the tree exists in the cache, return its flag information. \item\end{CompactList}\item 
+{\bf Result} {\bf update} (size\_\-t, size\_\-t, size\_\-t)
+\begin{CompactList}\small\item\em If the tree exists in the cache, return its flag information. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+size\_\-t {\bf \_\-hits}
+\begin{CompactList}\small\item\em number of elements stored in \item\end{CompactList}\item 
+size\_\-t {\bf \_\-updates}
+\begin{CompactList}\small\item\em total cache hits \item\end{CompactList}\item 
+size\_\-t {\bf \_\-collisions}
+\begin{CompactList}\small\item\em total cache updates \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+unsigned int {\bf hash} (size\_\-t)
+\begin{CompactList}\small\item\em Hash a tree into an size\_\-t. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Manager}$<$ T $>$ $\ast$ {\bf \_\-man}
+\item 
+{\bf Node} $\ast$ {\bf \_\-tab}
+\begin{CompactList}\small\item\em tree manager where all trees are stored \item\end{CompactList}\item 
+size\_\-t {\bf \_\-tab\-Size}
+\begin{CompactList}\small\item\em hash table \item\end{CompactList}\item 
+size\_\-t {\bf \_\-size}
+\begin{CompactList}\small\item\em hash table size (\# buckets) \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Cache} ()
+\begin{CompactList}\small\item\em total chain collisions \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf Node}
+\begin{CompactList}\small\item\em may want to templatize offset? maximum currently iteration hardcoded to 16 ==$>$ maximum distance is 32 os is potentially too small!! TODO: global max os value. \item\end{CompactList}\item 
+struct {\bf Result}
+\begin{CompactList}\small\item\em {\bf Result}{\rm (p.\,\pageref{structTreeCache_1_1Result})} token for returning status of a call to {\bf update()}{\rm (p.\,\pageref{classTreeCache_a4})}. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Tree\-Cache$<$ T $>$}
+
+Hash table with chaining that stores to references to trees. 
+
+Each bucket contains a pointer to the tree information in the tree manager as well as a flag denoting which search class the tree was found in. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TreeCache@{Tree\-Cache}!TreeCache@{TreeCache}}
+\index{TreeCache@{TreeCache}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$ T $>$::{\bf Tree\-Cache} (size\_\-t {\em n}, {\bf Tree\-Manager}$<$ T $>$ $\ast$ {\em man})}\label{classTreeCache_a0}
+
+
+Create the cache. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em n}]Size of the table \end{description}
+\end{Desc}
+\index{TreeCache@{Tree\-Cache}!~TreeCache@{$\sim$TreeCache}}
+\index{~TreeCache@{$\sim$TreeCache}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$ T $>$::$\sim${\bf Tree\-Cache} ()}\label{classTreeCache_a1}
+
+
+\index{TreeCache@{Tree\-Cache}!TreeCache@{TreeCache}}
+\index{TreeCache@{TreeCache}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$ T $>$::{\bf Tree\-Cache} ()\hspace{0.3cm}{\tt  [private]}}\label{classTreeCache_d0}
+
+
+total chain collisions 
+
+
+
+\subsection{Member Function Documentation}
+\index{TreeCache@{Tree\-Cache}!hash@{hash}}
+\index{hash@{hash}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ unsigned int {\bf Tree\-Cache}$<$ T $>$::hash (size\_\-t {\em os})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classTreeCache_b0}
+
+
+Hash a tree into an size\_\-t. 
+
+This is a dumb placeholder function that needs to be replaced. I am currently thinking of crc-32 or a variant. \index{TreeCache@{Tree\-Cache}!reset@{reset}}
+\index{reset@{reset}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Cache}$<$ T $>$::reset ()}\label{classTreeCache_a2}
+
+
+Remove all elements from the table and reset statistics. 
+
+\index{TreeCache@{Tree\-Cache}!size@{size}}
+\index{size@{size}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::size () const\hspace{0.3cm}{\tt  [inline]}}\label{classTreeCache_a3}
+
+
+Returns the number of elements in the table. 
+
+\index{TreeCache@{Tree\-Cache}!update@{update}}
+\index{update@{update}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$ T $>$::{\bf Result} {\bf Tree\-Cache}$<$ T $>$::update (size\_\-t {\em os}, size\_\-t {\em flag}, size\_\-t {\em iter})}\label{classTreeCache_a5}
+
+
+If the tree exists in the cache, return its flag information. 
+
+Otherwise insert it. \index{TreeCache@{Tree\-Cache}!update@{update}}
+\index{update@{update}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$ T $>$::{\bf Result} {\bf Tree\-Cache}$<$ T $>$::update (const {\bf UPTree}$<$ T $>$ \& {\em tree}, size\_\-t {\em flag}, size\_\-t {\em iter})\hspace{0.3cm}{\tt  [inline]}}\label{classTreeCache_a4}
+
+
+If the tree exists in the cache, return its flag information. 
+
+Otherwise insert it. 
+
+\subsection{Member Data Documentation}
+\index{TreeCache@{Tree\-Cache}!_collisions@{\_\-collisions}}
+\index{_collisions@{\_\-collisions}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-collisions}}\label{classTreeCache_o2}
+
+
+total cache updates 
+
+\index{TreeCache@{Tree\-Cache}!_hits@{\_\-hits}}
+\index{_hits@{\_\-hits}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-hits}}\label{classTreeCache_o0}
+
+
+number of elements stored in 
+
+\index{TreeCache@{Tree\-Cache}!_man@{\_\-man}}
+\index{_man@{\_\-man}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$T$>$$\ast$ {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-man}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeCache_p0}
+
+
+\index{TreeCache@{Tree\-Cache}!_size@{\_\-size}}
+\index{_size@{\_\-size}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeCache_p3}
+
+
+hash table size (\# buckets) 
+
+\index{TreeCache@{Tree\-Cache}!_tab@{\_\-tab}}
+\index{_tab@{\_\-tab}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Node}$\ast$ {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-tab}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeCache_p1}
+
+
+tree manager where all trees are stored 
+
+\index{TreeCache@{Tree\-Cache}!_tabSize@{\_\-tabSize}}
+\index{_tabSize@{\_\-tabSize}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-tab\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeCache_p2}
+
+
+hash table 
+
+\index{TreeCache@{Tree\-Cache}!_updates@{\_\-updates}}
+\index{_updates@{\_\-updates}!TreeCache@{Tree\-Cache}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Cache}$<$ T $>$::{\bf \_\-updates}}\label{classTreeCache_o1}
+
+
+total cache hits 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf treecache.h}\item 
+{\bf treecache\_\-impl.h}\end{CompactItemize}

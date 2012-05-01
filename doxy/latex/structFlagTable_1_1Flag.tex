@@ -1,0 +1,52 @@
+\section{Flag\-Table$<$ T $>$::Flag$<$ T $>$ Struct Template Reference}
+\label{structFlagTable_1_1Flag}\index{FlagTable::Flag@{FlagTable::Flag}}
+{\bf Flag}{\rm (p.\,\pageref{structFlagTable_1_1Flag})} can specify if a given node is marked as frozen and/or marked for deletion.  
+
+
+{\tt \#include $<$flagtable.h$>$}
+
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+unsigned char {\bf \_\-del}: 1
+\item 
+unsigned char {\bf \_\-freeze}: 1
+\begin{CompactList}\small\item\em Marked for deletion (1: marked, 0: not). \item\end{CompactList}\item 
+unsigned char {\bf \_\-rule}: 1
+\begin{CompactList}\small\item\em Marked as frozen (1: marked, 0: not). \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$template$<$class T$>$ struct Flag\-Table$<$ T $>$::Flag$<$ T $>$}
+
+{\bf Flag}{\rm (p.\,\pageref{structFlagTable_1_1Flag})} can specify if a given node is marked as frozen and/or marked for deletion. 
+
+The two flags are required as there are some small differences between kernelization and rekernelization Most nodes will be flagged as both except: 1) An extra Freeze flag is applied to the beginning of common chains flagged by rule 2. So if c\_\-3, c\_\-4, ..., c\_\-x are flagged for deletion then c\_\-2 will also be flagged as freeze-only 2) All elements, including surrounding brackets, of common subtrees are flagged for deleltion by rule 1 except for the leaf with the lowest lable. For purposes of rekernelization, this leaf is also flagged as frozen but the surrounding brackets are unflagged. 
+
+
+
+\subsection{Member Data Documentation}
+\index{FlagTable::Flag@{Flag\-Table::Flag}!_del@{\_\-del}}
+\index{_del@{\_\-del}!FlagTable::Flag@{Flag\-Table::Flag}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$class T$>$ unsigned char {\bf Flag\-Table}$<$ T $>$::{\bf Flag}$<$ T $>$::{\bf \_\-del}}\label{structFlagTable_1_1Flag_o0}
+
+
+\index{FlagTable::Flag@{Flag\-Table::Flag}!_freeze@{\_\-freeze}}
+\index{_freeze@{\_\-freeze}!FlagTable::Flag@{Flag\-Table::Flag}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$class T$>$ unsigned char {\bf Flag\-Table}$<$ T $>$::{\bf Flag}$<$ T $>$::{\bf \_\-freeze}}\label{structFlagTable_1_1Flag_o1}
+
+
+Marked for deletion (1: marked, 0: not). 
+
+\index{FlagTable::Flag@{Flag\-Table::Flag}!_rule@{\_\-rule}}
+\index{_rule@{\_\-rule}!FlagTable::Flag@{Flag\-Table::Flag}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ template$<$class T$>$ unsigned char {\bf Flag\-Table}$<$ T $>$::{\bf Flag}$<$ T $>$::{\bf \_\-rule}}\label{structFlagTable_1_1Flag_o2}
+
+
+Marked as frozen (1: marked, 0: not). 
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf flagtable.h}\end{CompactItemize}

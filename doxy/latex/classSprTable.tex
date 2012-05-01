@@ -1,0 +1,135 @@
+\section{Spr\-Table$<$ T $>$ Class Template Reference}
+\label{classSprTable}\index{SprTable@{SprTable}}
+Stores all possible regraft points for every subtree in a tree.  
+
+
+{\tt \#include $<$sprtable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Spr\-Table} ()
+\item 
+{\bf Spr\-Table} (int)
+\item 
+{\bf $\sim$Spr\-Table} ()
+\item 
+void {\bf resize} (int)
+\begin{CompactList}\small\item\em Resize table if necessary. \item\end{CompactList}\item 
+int {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Finds the position of all neighbouring subtrees of distance $>$= 2 from each subtree in tree. \item\end{CompactList}\item 
+int {\bf load\-Subtree} (const {\bf UPTree}$<$ T $>$ \&, int, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Find spr candidate neighbours of all subtrees in a subtree. \item\end{CompactList}\item 
+const {\bf NList} $\ast$ {\bf get\-Table} () const 
+\begin{CompactList}\small\item\em Get a const pointer to the table. \item\end{CompactList}\item 
+const {\bf NList} \& {\bf operator[$\,$]} (int) const 
+\begin{CompactList}\small\item\em Get non-NNI spr candidates for a given subtree position. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf NList} $\ast$ {\bf \_\-ntable}
+\item 
+int {\bf \_\-size}
+\begin{CompactList}\small\item\em list of spr neighbours for each subtree \item\end{CompactList}\item 
+std::stack$<$ int $>$ {\bf \_\-stack}
+\begin{CompactList}\small\item\em size of trees \item\end{CompactList}\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf NList}
+\begin{CompactList}\small\item\em List of valid regraft points. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Spr\-Table$<$ T $>$}
+
+Stores all possible regraft points for every subtree in a tree. 
+
+There are O(n) potential points for each subtree (leaf or left bracket) in the tree. NNI's are omitted.
+
+Valid SPR's that are not NNI's are subtrees separated by at least two edges. In the string representation, this corresponds to leaves / left brackets wtih at least 2 unmatched brackets between them. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SprTable@{Spr\-Table}!SprTable@{SprTable}}
+\index{SprTable@{SprTable}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Table}$<$ T $>$::{\bf Spr\-Table} ()}\label{classSprTable_a0}
+
+
+\index{SprTable@{Spr\-Table}!SprTable@{SprTable}}
+\index{SprTable@{SprTable}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Table}$<$ T $>$::{\bf Spr\-Table} (int)}\label{classSprTable_a1}
+
+
+\index{SprTable@{Spr\-Table}!~SprTable@{$\sim$SprTable}}
+\index{~SprTable@{$\sim$SprTable}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Table}$<$ T $>$::$\sim${\bf Spr\-Table} ()}\label{classSprTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{SprTable@{Spr\-Table}!getTable@{getTable}}
+\index{getTable@{getTable}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Spr\-Table}$<$ T $>$::{\bf NList} $\ast$ {\bf Spr\-Table}$<$ T $>$::get\-Table () const\hspace{0.3cm}{\tt  [inline]}}\label{classSprTable_a6}
+
+
+Get a const pointer to the table. 
+
+\index{SprTable@{Spr\-Table}!loadSubtree@{loadSubtree}}
+\index{loadSubtree@{loadSubtree}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Spr\-Table}$<$ T $>$::load\-Subtree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em pos}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classSprTable_a5}
+
+
+Find spr candidate neighbours of all subtrees in a subtree. 
+
+\index{SprTable@{Spr\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Spr\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classSprTable_a4}
+
+
+Finds the position of all neighbouring subtrees of distance $>$= 2 from each subtree in tree. 
+
+Very similar to the chain table but we also count subtrees as well as leaves by flagging left-bracket positions. O(n$^\wedge$2) \index{SprTable@{Spr\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Spr\-Table}$<$ T $>$::{\bf NList} \& {\bf Spr\-Table}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classSprTable_a7}
+
+
+Get non-NNI spr candidates for a given subtree position. 
+
+\index{SprTable@{Spr\-Table}!resize@{resize}}
+\index{resize@{resize}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Spr\-Table}$<$ T $>$::resize (int {\em size})}\label{classSprTable_a3}
+
+
+Resize table if necessary. 
+
+
+
+\subsection{Member Data Documentation}
+\index{SprTable@{Spr\-Table}!_ntable@{\_\-ntable}}
+\index{_ntable@{\_\-ntable}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf NList}$\ast$ {\bf Spr\-Table}$<$ T $>$::{\bf \_\-ntable}\hspace{0.3cm}{\tt  [protected]}}\label{classSprTable_p0}
+
+
+\index{SprTable@{Spr\-Table}!_size@{\_\-size}}
+\index{_size@{\_\-size}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Spr\-Table}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classSprTable_p1}
+
+
+list of spr neighbours for each subtree 
+
+\index{SprTable@{Spr\-Table}!_stack@{\_\-stack}}
+\index{_stack@{\_\-stack}!SprTable@{Spr\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::stack$<$int$>$ {\bf Spr\-Table}$<$ T $>$::{\bf \_\-stack}\hspace{0.3cm}{\tt  [protected]}}\label{classSprTable_p2}
+
+
+size of trees 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf sprtable.h}\item 
+{\bf sprtable\_\-impl.h}\end{CompactItemize}

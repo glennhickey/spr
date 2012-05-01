@@ -1,0 +1,83 @@
+\section{Crc32$<$ T $>$ Class Template Reference}
+\label{classCrc32}\index{Crc32@{Crc32}}
+{\tt \#include $<$crc32.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+unsigned int {\bf crc} (const {\bf UPTree}$<$ T $>$ \&) const 
+\begin{CompactList}\small\item\em Hash a tree into an unsigned int using crc-32 Based on code from this web page:. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static const {\bf Crc32} $\ast$ {\bf get\-Instance} ()
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+unsigned int {\bf \_\-table} [256]
+\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static {\bf Crc32} $\ast$ {\bf \_\-inst} = NULL
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Crc32} ()
+\begin{CompactList}\small\item\em Build auxiliary table for parallel byte-at-a-time CRC-32. \item\end{CompactList}\item 
+{\bf Crc32} (const {\bf Crc32} \&)
+\end{CompactItemize}
+\subsubsection*{template$<$class T$>$ class Crc32$<$ T $>$}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Crc32@{Crc32}!Crc32@{Crc32}}
+\index{Crc32@{Crc32}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Crc32}$<$ T $>$::{\bf Crc32} ()\hspace{0.3cm}{\tt  [private]}}\label{classCrc32_d0}
+
+
+Build auxiliary table for parallel byte-at-a-time CRC-32. 
+
+{\tt http://www.faqs.org/faqs/compression-faq/part1/section-26.html} \index{Crc32@{Crc32}!Crc32@{Crc32}}
+\index{Crc32@{Crc32}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Crc32}$<$ T $>$::{\bf Crc32} (const {\bf Crc32}$<$ T $>$ \&)\hspace{0.3cm}{\tt  [private]}}\label{classCrc32_d1}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{Crc32@{Crc32}!crc@{crc}}
+\index{crc@{crc}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ unsigned int {\bf Crc32}$<$ T $>$::crc (const {\bf UPTree}$<$ T $>$ \& {\em tree}) const}\label{classCrc32_a0}
+
+
+Hash a tree into an unsigned int using crc-32 Based on code from this web page:. 
+
+{\tt http://www.faqs.org/faqs/compression-faq/part1/section-26.html} \index{Crc32@{Crc32}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Crc32}$<$ T $>$ $\ast$ {\bf Crc32}$<$ T $>$::get\-Instance ()\hspace{0.3cm}{\tt  [inline, static]}}\label{classCrc32_e0}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{Crc32@{Crc32}!_inst@{\_\-inst}}
+\index{_inst@{\_\-inst}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Crc32}$<$ unsigned char $>$ $\ast$ {\bf Crc32}$<$ T $>$::{\bf \_\-inst} = NULL\hspace{0.3cm}{\tt  [static, protected]}}\label{classCrc32_t0}
+
+
+\index{Crc32@{Crc32}!_table@{\_\-table}}
+\index{_table@{\_\-table}!Crc32@{Crc32}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ unsigned int {\bf Crc32}$<$ T $>$::{\bf \_\-table}[256]\hspace{0.3cm}{\tt  [protected]}}\label{classCrc32_p0}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf crc32.h}\item 
+{\bf constants.cpp}\item 
+{\bf crc32\_\-impl.h}\end{CompactItemize}

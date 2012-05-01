@@ -1,0 +1,345 @@
+\section{Tree\-Distance$<$ T $>$ Class Template Reference}
+\label{classTreeDistance}\index{TreeDistance@{TreeDistance}}
+Compute SPR-distance between two unrooted NEWICK trees.  
+
+
+{\tt \#include $<$treedistance.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Tree\-Distance} ()
+\item 
+{\bf $\sim$Tree\-Distance} ()
+\item 
+size\_\-t {\bf num\-Leaves} (size\_\-t) const 
+\item 
+void {\bf set\-Max\-Iterations} (size\_\-t)
+\begin{CompactList}\small\item\em Specify maximum number of iterations. \item\end{CompactList}\item 
+void {\bf set\-Init\-Manager\-Size} (size\_\-t)
+\begin{CompactList}\small\item\em Reset the initial manager size. \item\end{CompactList}\item 
+void {\bf set\-Cache\-Table\-Size} (size\_\-t)
+\begin{CompactList}\small\item\em Reset the number of buckets in the hash table used by the tree cache as a consequnce, the cache and searchers are out of date. \item\end{CompactList}\item 
+bool {\bf set\-Tree} (const std::string \&, int)
+\begin{CompactList}\small\item\em Load a Newick tree. \item\end{CompactList}\item 
+int {\bf kernelize} ()
+\begin{CompactList}\small\item\em Kernelize the two trees loaded with {\bf set\-Tree()}{\rm (p.\,\pageref{classTreeDistance_a6})}. \item\end{CompactList}\item 
+int {\bf distance} (bool)
+\begin{CompactList}\small\item\em Computes the SPR distance of the trees. \item\end{CompactList}\item 
+int {\bf splits\-Forest\-Distance} ()
+\item 
+int {\bf sync\-Leaf\-Set} ()
+\begin{CompactList}\small\item\em This method expects a supertree to be loaded as t1 and and a reference tree (made up of a subset of the supertree's leafset) to be loaded as t2. \item\end{CompactList}\item 
+size\_\-t {\bf size} () const 
+\item 
+size\_\-t {\bf duplicates} () const 
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\-Kernelize\-Structures} ()
+\begin{CompactList}\small\item\em Ensure that all kernelization structures are properly allocated for the current tree size. \item\end{CompactList}\item 
+void {\bf init\-Search\-Structures} ()
+\begin{CompactList}\small\item\em Ensure that all search sutructures are properly allocated for the current tree size. \item\end{CompactList}\item 
+void {\bf init\-Leaf\-Set\-Structures} ()
+\begin{CompactList}\small\item\em Ensure that all structures required for supertree extraction are properly allocated for the current tree size. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::vector$<$ std::string $>$ {\bf \_\-name\-Lookup} [2]
+\item 
+std::string {\bf \_\-tree\-String} [2]
+\begin{CompactList}\small\item\em maps leaf names to numbers \item\end{CompactList}\item 
+size\_\-t {\bf \_\-num\-Leaves\-Kernelized}
+\begin{CompactList}\small\item\em copy of input tree strings \item\end{CompactList}\item 
+size\_\-t {\bf \_\-max\-Iterations}
+\begin{CompactList}\small\item\em \# leaves in kernelized trees \item\end{CompactList}\item 
+size\_\-t {\bf \_\-cache\-Table\-Size}
+\begin{CompactList}\small\item\em max iterations for search \item\end{CompactList}\item 
+size\_\-t {\bf \_\-init\-Manager\-Size}
+\begin{CompactList}\small\item\em size of hash table array \item\end{CompactList}\item 
+size\_\-t {\bf \_\-num\-Trees\-Searched}
+\begin{CompactList}\small\item\em size of inital alloc of treemanager \item\end{CompactList}\item 
+size\_\-t {\bf \_\-num\-Cache\-Hits}
+\item 
+{\bf Tree\-Manager}$<$ unsigned short $>$ $\ast$ {\bf \_\-big\-Manager}
+\item 
+{\bf Tree\-Manager}$<$ unsigned short $>$ $\ast$ {\bf \_\-big\-Manager2}
+\begin{CompactList}\small\item\em manager for 16-bit trees \item\end{CompactList}\item 
+{\bf Kernelizor}$<$ unsigned short $>$ $\ast$ {\bf \_\-big\-Kernelizor}
+\begin{CompactList}\small\item\em manager for 16-bit trees \item\end{CompactList}\item 
+{\bf Validator}$<$ unsigned short $>$ $\ast$ {\bf \_\-big\-Validator}
+\begin{CompactList}\small\item\em kernelizor for 16-bit trees \item\end{CompactList}\item 
+{\bf Extract\-Subtree}$<$ unsigned short, unsigned short $>$ {\bf \_\-big\-Extractor}
+\begin{CompactList}\small\item\em validator for 16-bit trees \item\end{CompactList}\item 
+{\bf Extract\-Splits\-Forest} {\bf \_\-splits\-Forest}
+\begin{CompactList}\small\item\em support for supertree extraction \item\end{CompactList}\item 
+{\bf Tree\-Manager}$<$ unsigned char $>$ $\ast$ {\bf \_\-manager}
+\begin{CompactList}\small\item\em support for splits heuristic \item\end{CompactList}\item 
+{\bf Tree\-Cache}$<$ unsigned char $>$ $\ast$ {\bf \_\-cache}
+\begin{CompactList}\small\item\em byte tree manager \item\end{CompactList}\item 
+{\bf Validator}$<$ unsigned char $>$ $\ast$ {\bf \_\-validator}
+\begin{CompactList}\small\item\em byte tree cache \item\end{CompactList}\item 
+{\bf SPRSearch}$<$ unsigned char $>$ $\ast$ {\bf \_\-searcher} [2]
+\begin{CompactList}\small\item\em byte tree validator \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Tree\-Distance$<$ T $>$}
+
+Compute SPR-distance between two unrooted NEWICK trees. 
+
+This class presently takes as input any pair of unrooted trees with the same leaf set where the number of leaves is less than 2$^\wedge$13 - 1. The SPR distance is computed by first kernelizing the input trees then performing two exhaustive breadth first searches, one beginning at each tree. A minimal SPR-distance is obtained when both searches reach a common topolgy.
+
+BUG: I don't think {\bf distance()}{\rm (p.\,\pageref{classTreeDistance_a8})} currently works without {\bf kernelize()}{\rm (p.\,\pageref{classTreeDistance_a7})} being called first because numleaveskernelized is required... 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{TreeDistance@{Tree\-Distance}!TreeDistance@{TreeDistance}}
+\index{TreeDistance@{TreeDistance}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Distance}$<$ T $>$::{\bf Tree\-Distance} ()}\label{classTreeDistance_a0}
+
+
+\index{TreeDistance@{Tree\-Distance}!~TreeDistance@{$\sim$TreeDistance}}
+\index{~TreeDistance@{$\sim$TreeDistance}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Distance}$<$ T $>$::$\sim${\bf Tree\-Distance} ()}\label{classTreeDistance_a1}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{TreeDistance@{Tree\-Distance}!distance@{distance}}
+\index{distance@{distance}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Tree\-Distance}$<$ T $>$::distance (bool {\em use\-Split\-Forest})}\label{classTreeDistance_a8}
+
+
+Computes the SPR distance of the trees. 
+
+\begin{Desc}
+\item[Returns:]Distance if success, -1 otherwise. \end{Desc}
+\index{TreeDistance@{Tree\-Distance}!duplicates@{duplicates}}
+\index{duplicates@{duplicates}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::duplicates () const}\label{classTreeDistance_a12}
+
+
+\index{TreeDistance@{Tree\-Distance}!initKernelizeStructures@{initKernelizeStructures}}
+\index{initKernelizeStructures@{initKernelizeStructures}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::init\-Kernelize\-Structures ()\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_b0}
+
+
+Ensure that all kernelization structures are properly allocated for the current tree size. 
+
+\index{TreeDistance@{Tree\-Distance}!initLeafSetStructures@{initLeafSetStructures}}
+\index{initLeafSetStructures@{initLeafSetStructures}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::init\-Leaf\-Set\-Structures ()\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_b2}
+
+
+Ensure that all structures required for supertree extraction are properly allocated for the current tree size. 
+
+\index{TreeDistance@{Tree\-Distance}!initSearchStructures@{initSearchStructures}}
+\index{initSearchStructures@{initSearchStructures}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::init\-Search\-Structures ()\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_b1}
+
+
+Ensure that all search sutructures are properly allocated for the current tree size. 
+
+\index{TreeDistance@{Tree\-Distance}!kernelize@{kernelize}}
+\index{kernelize@{kernelize}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Tree\-Distance}$<$ T $>$::kernelize ()}\label{classTreeDistance_a7}
+
+
+Kernelize the two trees loaded with {\bf set\-Tree()}{\rm (p.\,\pageref{classTreeDistance_a6})}. 
+
+\begin{Desc}
+\item[Returns:]Number of leaves removed by kernelization. \end{Desc}
+\index{TreeDistance@{Tree\-Distance}!numLeaves@{numLeaves}}
+\index{numLeaves@{numLeaves}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::num\-Leaves (size\_\-t) const}\label{classTreeDistance_a2}
+
+
+\index{TreeDistance@{Tree\-Distance}!setCacheTableSize@{setCacheTableSize}}
+\index{setCacheTableSize@{setCacheTableSize}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::set\-Cache\-Table\-Size (size\_\-t {\em size})}\label{classTreeDistance_a5}
+
+
+Reset the number of buckets in the hash table used by the tree cache as a consequnce, the cache and searchers are out of date. 
+
+\index{TreeDistance@{Tree\-Distance}!setInitManagerSize@{setInitManagerSize}}
+\index{setInitManagerSize@{setInitManagerSize}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::set\-Init\-Manager\-Size (size\_\-t {\em size})}\label{classTreeDistance_a4}
+
+
+Reset the initial manager size. 
+
+as a consequence, the other structures must also be hosed. i can't really think of a reason why this function woudl be useful. \index{TreeDistance@{Tree\-Distance}!setMaxIterations@{setMaxIterations}}
+\index{setMaxIterations@{setMaxIterations}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Distance}$<$ T $>$::set\-Max\-Iterations (size\_\-t {\em mi})}\label{classTreeDistance_a3}
+
+
+Specify maximum number of iterations. 
+
+\index{TreeDistance@{Tree\-Distance}!setTree@{setTree}}
+\index{setTree@{setTree}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Tree\-Distance}$<$ T $>$::set\-Tree (const std::string \& {\em in\-String}, int {\em num})}\label{classTreeDistance_a6}
+
+
+Load a Newick tree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em num}]Specify T1 or T2 (must be 0 or 1) \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]true if successfully loaded, false otherwise \end{Desc}
+\index{TreeDistance@{Tree\-Distance}!size@{size}}
+\index{size@{size}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::size () const}\label{classTreeDistance_a11}
+
+
+\begin{Desc}
+\item[Returns:]the number of trees in memory. this is the size of the last search performed. \end{Desc}
+\index{TreeDistance@{Tree\-Distance}!splitsForestDistance@{splitsForestDistance}}
+\index{splitsForestDistance@{splitsForestDistance}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Tree\-Distance}$<$ T $>$::splits\-Forest\-Distance ()}\label{classTreeDistance_a9}
+
+
+\index{TreeDistance@{Tree\-Distance}!syncLeafSet@{syncLeafSet}}
+\index{syncLeafSet@{syncLeafSet}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Tree\-Distance}$<$ T $>$::sync\-Leaf\-Set ()}\label{classTreeDistance_a10}
+
+
+This method expects a supertree to be loaded as t1 and and a reference tree (made up of a subset of the supertree's leafset) to be loaded as t2. 
+
+All leaves of the supertree notin the reference tree will be removed so that t1 and t2 are of the same size and comparable by the SPR distance metric. \begin{Desc}
+\item[Returns:]0 is operation was successful. \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{TreeDistance@{Tree\-Distance}!_bigExtractor@{\_\-bigExtractor}}
+\index{_bigExtractor@{\_\-bigExtractor}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Extract\-Subtree}$<$unsigned short, unsigned short$>$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-big\-Extractor}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p12}
+
+
+validator for 16-bit trees 
+
+\index{TreeDistance@{Tree\-Distance}!_bigKernelizor@{\_\-bigKernelizor}}
+\index{_bigKernelizor@{\_\-bigKernelizor}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Kernelizor}$<$unsigned short$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-big\-Kernelizor}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p10}
+
+
+manager for 16-bit trees 
+
+\index{TreeDistance@{Tree\-Distance}!_bigManager@{\_\-bigManager}}
+\index{_bigManager@{\_\-bigManager}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$unsigned short$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-big\-Manager}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p8}
+
+
+\index{TreeDistance@{Tree\-Distance}!_bigManager2@{\_\-bigManager2}}
+\index{_bigManager2@{\_\-bigManager2}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$unsigned short$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-big\-Manager2}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p9}
+
+
+manager for 16-bit trees 
+
+\index{TreeDistance@{Tree\-Distance}!_bigValidator@{\_\-bigValidator}}
+\index{_bigValidator@{\_\-bigValidator}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$unsigned short$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-big\-Validator}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p11}
+
+
+kernelizor for 16-bit trees 
+
+\index{TreeDistance@{Tree\-Distance}!_cache@{\_\-cache}}
+\index{_cache@{\_\-cache}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Cache}$<$unsigned char$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-cache}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p15}
+
+
+byte tree manager 
+
+\index{TreeDistance@{Tree\-Distance}!_cacheTableSize@{\_\-cacheTableSize}}
+\index{_cacheTableSize@{\_\-cacheTableSize}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-cache\-Table\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p4}
+
+
+max iterations for search 
+
+\index{TreeDistance@{Tree\-Distance}!_initManagerSize@{\_\-initManagerSize}}
+\index{_initManagerSize@{\_\-initManagerSize}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-init\-Manager\-Size}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p5}
+
+
+size of hash table array 
+
+\index{TreeDistance@{Tree\-Distance}!_manager@{\_\-manager}}
+\index{_manager@{\_\-manager}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Tree\-Manager}$<$unsigned char$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-manager}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p14}
+
+
+support for splits heuristic 
+
+\index{TreeDistance@{Tree\-Distance}!_maxIterations@{\_\-maxIterations}}
+\index{_maxIterations@{\_\-maxIterations}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-max\-Iterations}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p3}
+
+
+\# leaves in kernelized trees 
+
+\index{TreeDistance@{Tree\-Distance}!_nameLookup@{\_\-nameLookup}}
+\index{_nameLookup@{\_\-nameLookup}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::vector$<$std::string$>$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-name\-Lookup}[2]\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p0}
+
+
+\index{TreeDistance@{Tree\-Distance}!_numCacheHits@{\_\-numCacheHits}}
+\index{_numCacheHits@{\_\-numCacheHits}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-num\-Cache\-Hits}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p7}
+
+
+\index{TreeDistance@{Tree\-Distance}!_numLeavesKernelized@{\_\-numLeavesKernelized}}
+\index{_numLeavesKernelized@{\_\-numLeavesKernelized}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-num\-Leaves\-Kernelized}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p2}
+
+
+copy of input tree strings 
+
+\index{TreeDistance@{Tree\-Distance}!_numTreesSearched@{\_\-numTreesSearched}}
+\index{_numTreesSearched@{\_\-numTreesSearched}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-num\-Trees\-Searched}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p6}
+
+
+size of inital alloc of treemanager 
+
+\index{TreeDistance@{Tree\-Distance}!_searcher@{\_\-searcher}}
+\index{_searcher@{\_\-searcher}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf SPRSearch}$<$unsigned char$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-searcher}[2]\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p17}
+
+
+byte tree validator 
+
+\index{TreeDistance@{Tree\-Distance}!_splitsForest@{\_\-splitsForest}}
+\index{_splitsForest@{\_\-splitsForest}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Extract\-Splits\-Forest} {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-splits\-Forest}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p13}
+
+
+support for supertree extraction 
+
+\index{TreeDistance@{Tree\-Distance}!_treeString@{\_\-treeString}}
+\index{_treeString@{\_\-treeString}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std::string {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-tree\-String}[2]\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p1}
+
+
+maps leaf names to numbers 
+
+\index{TreeDistance@{Tree\-Distance}!_validator@{\_\-validator}}
+\index{_validator@{\_\-validator}!TreeDistance@{Tree\-Distance}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Validator}$<$unsigned char$>$$\ast$ {\bf Tree\-Distance}$<$ T $>$::{\bf \_\-validator}\hspace{0.3cm}{\tt  [protected]}}\label{classTreeDistance_p16}
+
+
+byte tree cache 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf treedistance.h}\item 
+{\bf treedistance.cpp}\end{CompactItemize}

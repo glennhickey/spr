@@ -1,0 +1,114 @@
+\section{Spr\-Helper$<$ T $>$ Class Template Reference}
+\label{classSprHelper}\index{SprHelper@{SprHelper}}
+Provides quick access to subtrees after a retrifurcation.  
+
+
+{\tt \#include $<$sprhelper.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Spr\-Helper} (int)
+\item 
+{\bf $\sim$Spr\-Helper} ()
+\item 
+void {\bf flag\-Subtree} (const {\bf UPTree}$<$ T $>$ \&, int, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em Flag leaf labels of a subtree. \item\end{CompactList}\item 
+int {\bf get\-Flagged\-Inverse} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static T {\bf next\-Leaf\-Label} (const {\bf UPTree}$<$ T $>$ \&, int)
+\begin{CompactList}\small\item\em Search for the next leaf in the string starting at pos. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+bool $\ast$ {\bf \_\-flags}
+\item 
+int {\bf \_\-size}
+\begin{CompactList}\small\item\em leaves corresponding to a subtree are flagged \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Spr\-Helper} ()
+\begin{CompactList}\small\item\em tree size (not leaves) \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Spr\-Helper$<$ T $>$}
+
+Provides quick access to subtrees after a retrifurcation. 
+
+Used when enumerating SPR neighbours. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SprHelper@{Spr\-Helper}!SprHelper@{SprHelper}}
+\index{SprHelper@{SprHelper}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Helper}$<$ T $>$::{\bf Spr\-Helper} (int)}\label{classSprHelper_a0}
+
+
+\index{SprHelper@{Spr\-Helper}!~SprHelper@{$\sim$SprHelper}}
+\index{~SprHelper@{$\sim$SprHelper}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Helper}$<$ T $>$::$\sim${\bf Spr\-Helper} ()}\label{classSprHelper_a1}
+
+
+\index{SprHelper@{Spr\-Helper}!SprHelper@{SprHelper}}
+\index{SprHelper@{SprHelper}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Spr\-Helper}$<$ T $>$::{\bf Spr\-Helper} ()\hspace{0.3cm}{\tt  [private]}}\label{classSprHelper_d0}
+
+
+tree size (not leaves) 
+
+
+
+\subsection{Member Function Documentation}
+\index{SprHelper@{Spr\-Helper}!flagSubtree@{flagSubtree}}
+\index{flagSubtree@{flagSubtree}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Spr\-Helper}$<$ T $>$::flag\-Subtree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em pos}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classSprHelper_a2}
+
+
+Flag leaf labels of a subtree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em tree}]Input tree. \item[{\em pos}]Start position of the subtree to flag. \item[{\em btable}]Bracket Table associated with the tree. Used to identifiy the end of the subtree. \end{description}
+\end{Desc}
+\index{SprHelper@{Spr\-Helper}!getFlaggedInverse@{getFlaggedInverse}}
+\index{getFlaggedInverse@{getFlaggedInverse}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Spr\-Helper}$<$ T $>$::get\-Flagged\-Inverse (const {\bf UPTree}$<$ T $>$ \& {\em tree}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classSprHelper_a3}
+
+
+\begin{Desc}
+\item[Returns:]The start position of the subtree corresponding to all the un UNflagged leaves. \end{Desc}
+\index{SprHelper@{Spr\-Helper}!nextLeafLabel@{nextLeafLabel}}
+\index{nextLeafLabel@{nextLeafLabel}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Spr\-Helper}$<$ T $>$::next\-Leaf\-Label (const {\bf UPTree}$<$ T $>$ \& {\em tree}, int {\em pos})\hspace{0.3cm}{\tt  [static]}}\label{classSprHelper_e0}
+
+
+Search for the next leaf in the string starting at pos. 
+
+Is potentially O(n) so it may be better to search from both ends or use a bracket table or something. 
+
+\subsection{Member Data Documentation}
+\index{SprHelper@{Spr\-Helper}!_flags@{\_\-flags}}
+\index{_flags@{\_\-flags}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool$\ast$ {\bf Spr\-Helper}$<$ T $>$::{\bf \_\-flags}\hspace{0.3cm}{\tt  [protected]}}\label{classSprHelper_p0}
+
+
+\index{SprHelper@{Spr\-Helper}!_size@{\_\-size}}
+\index{_size@{\_\-size}!SprHelper@{Spr\-Helper}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Spr\-Helper}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classSprHelper_p1}
+
+
+leaves corresponding to a subtree are flagged 
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf sprhelper.h}\item 
+{\bf sprhelper\_\-impl.h}\end{CompactItemize}

@@ -1,0 +1,154 @@
+\section{Tree\-Tok$<$ T $>$ Struct Template Reference}
+\label{structTreeTok}\index{TreeTok@{TreeTok}}
+Token used in the binary tree representation.  
+
+
+{\tt \#include $<$treetok.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf TTYPE} {\bf my\-Type} () const 
+\begin{CompactList}\small\item\em Return token type. \item\end{CompactList}\item 
+T {\bf my\-Label} () const 
+\begin{CompactList}\small\item\em Return leaf label. \item\end{CompactList}\item 
+bool {\bf my\-Flag} () const 
+\begin{CompactList}\small\item\em Return boolean flag. \item\end{CompactList}\item 
+void {\bf set\-LB} ()
+\begin{CompactList}\small\item\em Set token to left bracket. \item\end{CompactList}\item 
+void {\bf set\-RB} ()
+\begin{CompactList}\small\item\em Set token to right bracket. \item\end{CompactList}\item 
+void {\bf set\-Leaf} (T)
+\begin{CompactList}\small\item\em Set token to leaf and assign label value. \item\end{CompactList}\item 
+void {\bf set\-Flag} (bool)
+\begin{CompactList}\small\item\em Set boolean flag of token. \item\end{CompactList}\item 
+void {\bf set} (char $\ast$)
+\begin{CompactList}\small\item\em Convert character string to a token. \item\end{CompactList}\item 
+size\_\-t {\bf capacity} () const 
+\begin{CompactList}\small\item\em Return the maximum number of unique leaf labels that can be stored in a token of this size. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+T {\bf \_\-val}: sizeof(T) $\ast$ 8 - 1
+\begin{CompactList}\small\item\em The leaf label if token is a leaf. \item\end{CompactList}\item 
+T {\bf \_\-flag}: 1
+\begin{CompactList}\small\item\em Boolean flag. Used to determine if token is flagged for deletion. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Static Public Attributes}
+\begin{CompactItemize}
+\item 
+static const T {\bf LBVal}
+\item 
+static const T {\bf RBVal}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ struct Tree\-Tok$<$ T $>$}
+
+Token used in the binary tree representation. 
+
+Can be either a Left Bracket (LB), Right Bracket (RB) or Leaf (LEAF). Note that template parameter T MUST BE UNSIGNED for this class to behave properly.
+
+TODO: we don't need to store flags in the treetok since all flags are temporary and can be passed from kernelizor to searcher in a separate structure (ie flagtable) also, we don't need to waste a whole bit for bracket flags more efficient: ( = num\_\-limits$<$T$>$::max() - 1, ) = num\_\-limits$<$T$>$::max() this allows up to 2$^\wedge$8 - 2 to be stored in a byte tree as opposed to 2$^\wedge$5 (difference = 253 vs 32) 
+
+
+
+\subsection{Member Function Documentation}
+\index{TreeTok@{Tree\-Tok}!capacity@{capacity}}
+\index{capacity@{capacity}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ size\_\-t {\bf Tree\-Tok}$<$ T $>$::capacity () const\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a8}
+
+
+Return the maximum number of unique leaf labels that can be stored in a token of this size. 
+
+\index{TreeTok@{Tree\-Tok}!myFlag@{myFlag}}
+\index{myFlag@{myFlag}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Tree\-Tok}$<$ T $>$::my\-Flag () const\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a2}
+
+
+Return boolean flag. 
+
+\index{TreeTok@{Tree\-Tok}!myLabel@{myLabel}}
+\index{myLabel@{myLabel}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Tree\-Tok}$<$ T $>$::my\-Label () const\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a1}
+
+
+Return leaf label. 
+
+Only applies to leaf tokens. \index{TreeTok@{Tree\-Tok}!myType@{myType}}
+\index{myType@{myType}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf TTYPE} {\bf Tree\-Tok}$<$ T $>$::my\-Type () const\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a0}
+
+
+Return token type. 
+
+\begin{Desc}
+\item[See also:]enum {\bf TTYPE}{\rm (p.\,\pageref{treetok_8h_a4})} \end{Desc}
+\index{TreeTok@{Tree\-Tok}!set@{set}}
+\index{set@{set}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Tok}$<$ T $>$::set (char $\ast$ {\em s})\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a7}
+
+
+Convert character string to a token. 
+
+String should be \char`\"{})\char`\"{}, \char`\"{}(\char`\"{} or a leaf label. \index{TreeTok@{Tree\-Tok}!setFlag@{setFlag}}
+\index{setFlag@{setFlag}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Tok}$<$ T $>$::set\-Flag (bool {\em flag})\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a6}
+
+
+Set boolean flag of token. 
+
+\index{TreeTok@{Tree\-Tok}!setLB@{setLB}}
+\index{setLB@{setLB}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Tok}$<$ T $>$::set\-LB ()\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a3}
+
+
+Set token to left bracket. 
+
+Flag is reset. \index{TreeTok@{Tree\-Tok}!setLeaf@{setLeaf}}
+\index{setLeaf@{setLeaf}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Tok}$<$ T $>$::set\-Leaf (T {\em label})\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a5}
+
+
+Set token to leaf and assign label value. 
+
+Flag is reset. \index{TreeTok@{Tree\-Tok}!setRB@{setRB}}
+\index{setRB@{setRB}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Tree\-Tok}$<$ T $>$::set\-RB ()\hspace{0.3cm}{\tt  [inline]}}\label{structTreeTok_a4}
+
+
+Set token to right bracket. 
+
+Flag is reset. 
+
+\subsection{Member Data Documentation}
+\index{TreeTok@{Tree\-Tok}!_flag@{\_\-flag}}
+\index{_flag@{\_\-flag}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Tree\-Tok}$<$ T $>$::{\bf \_\-flag}}\label{structTreeTok_o1}
+
+
+Boolean flag. Used to determine if token is flagged for deletion. 
+
+\index{TreeTok@{Tree\-Tok}!_val@{\_\-val}}
+\index{_val@{\_\-val}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Tree\-Tok}$<$ T $>$::{\bf \_\-val}}\label{structTreeTok_o0}
+
+
+The leaf label if token is a leaf. 
+
+\index{TreeTok@{Tree\-Tok}!LBVal@{LBVal}}
+\index{LBVal@{LBVal}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T {\bf Tree\-Tok}$<$ T $>$::{\bf LBVal}\hspace{0.3cm}{\tt  [static]}}\label{structTreeTok_s0}
+
+
+\index{TreeTok@{Tree\-Tok}!RBVal@{RBVal}}
+\index{RBVal@{RBVal}!TreeTok@{Tree\-Tok}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T {\bf Tree\-Tok}$<$ T $>$::{\bf RBVal}\hspace{0.3cm}{\tt  [static]}}\label{structTreeTok_s1}
+
+
+
+
+The documentation for this struct was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf treetok.h}\item 
+{\bf treetok\_\-impl.h}\end{CompactItemize}

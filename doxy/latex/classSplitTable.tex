@@ -1,0 +1,114 @@
+\section{Split\-Table$<$ T $>$ Class Template Reference}
+\label{classSplitTable}\index{SplitTable@{SplitTable}}
+The split table can load all non-trivial splits of a tree and provide set-like operations with split tables of other trees in order to identify common splits.  
+
+
+{\tt \#include $<$splittable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Split\-Table} ()
+\item 
+{\bf Split\-Table} (size\_\-t)
+\item 
+{\bf $\sim$Split\-Table} ()
+\item 
+void {\bf resize} (size\_\-t)
+\item 
+int {\bf get\-Size} () const 
+\item 
+const {\bf Split}$<$ T $>$ \& {\bf operator[$\,$]} (size\_\-t) const 
+\item 
+void {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\item 
+const {\bf Split}$<$ T $>$ $\ast$ {\bf lcs} (const {\bf Split\-Table}$<$ T $>$ \&) const 
+\item 
+const int {\bf intersection} (const {\bf Split\-Table}$<$ T $>$ \&, {\bf Split\-Table}$<$ T $>$ \&) const 
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf CVector}$<$ {\bf Split}$<$ T $>$ $\ast$ $>$ {\bf \_\-splits}
+\item 
+{\bf Split}$<$ T $>$ {\bf \_\-temp}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Split\-Table$<$ T $>$}
+
+The split table can load all non-trivial splits of a tree and provide set-like operations with split tables of other trees in order to identify common splits. 
+
+This is a quadratic-sized datastructure with respect to leaf number. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SplitTable@{Split\-Table}!SplitTable@{SplitTable}}
+\index{SplitTable@{SplitTable}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Split\-Table}$<$ T $>$::{\bf Split\-Table} ()}\label{classSplitTable_a0}
+
+
+\index{SplitTable@{Split\-Table}!SplitTable@{SplitTable}}
+\index{SplitTable@{SplitTable}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Split\-Table}$<$ T $>$::{\bf Split\-Table} (size\_\-t)}\label{classSplitTable_a1}
+
+
+\index{SplitTable@{Split\-Table}!~SplitTable@{$\sim$SplitTable}}
+\index{~SplitTable@{$\sim$SplitTable}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Split\-Table}$<$ T $>$::$\sim${\bf Split\-Table} ()}\label{classSplitTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{SplitTable@{Split\-Table}!getSize@{getSize}}
+\index{getSize@{getSize}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Split\-Table}$<$ T $>$::get\-Size () const}\label{classSplitTable_a4}
+
+
+\index{SplitTable@{Split\-Table}!intersection@{intersection}}
+\index{intersection@{intersection}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const int {\bf Split\-Table}$<$ T $>$::intersection (const {\bf Split\-Table}$<$ T $>$ \&, {\bf Split\-Table}$<$ T $>$ \&) const}\label{classSplitTable_a8}
+
+
+\index{SplitTable@{Split\-Table}!lcs@{lcs}}
+\index{lcs@{lcs}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Split}$<$ T $>$ $\ast$ {\bf Split\-Table}$<$ T $>$::lcs (const {\bf Split\-Table}$<$ T $>$ \&) const}\label{classSplitTable_a7}
+
+
+\index{SplitTable@{Split\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Split\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)}\label{classSplitTable_a6}
+
+
+\index{SplitTable@{Split\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Split}$<$ T $>$ \& {\bf Split\-Table}$<$ T $>$::operator[$\,$] (size\_\-t) const}\label{classSplitTable_a5}
+
+
+\index{SplitTable@{Split\-Table}!resize@{resize}}
+\index{resize@{resize}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Split\-Table}$<$ T $>$::resize (size\_\-t)}\label{classSplitTable_a3}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{SplitTable@{Split\-Table}!_splits@{\_\-splits}}
+\index{_splits@{\_\-splits}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf CVector}$<${\bf Split}$<$T$>$$\ast$$>$ {\bf Split\-Table}$<$ T $>$::{\bf \_\-splits}\hspace{0.3cm}{\tt  [protected]}}\label{classSplitTable_p0}
+
+
+\index{SplitTable@{Split\-Table}!_temp@{\_\-temp}}
+\index{_temp@{\_\-temp}!SplitTable@{Split\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Split}$<$T$>$ {\bf Split\-Table}$<$ T $>$::{\bf \_\-temp}\hspace{0.3cm}{\tt  [protected]}}\label{classSplitTable_p1}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf splittable.h}\item 
+{\bf splittable\_\-impl.h}\end{CompactItemize}

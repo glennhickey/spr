@@ -1,0 +1,131 @@
+\section{Cherry\-Table$<$ T $>$ Class Template Reference}
+\label{classCherryTable}\index{CherryTable@{CherryTable}}
+Stores the position of cherry neighbour of each leaf in the tree.  
+
+
+{\tt \#include $<$cherrytable.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Cherry\-Table} ()
+\item 
+{\bf Cherry\-Table} (int)
+\item 
+{\bf $\sim$Cherry\-Table} ()
+\item 
+void {\bf resize} (int)
+\begin{CompactList}\small\item\em Resize the table if necessary. \item\end{CompactList}\item 
+int {\bf load\-Tree} (const {\bf UPTree}$<$ T $>$ \&, const {\bf Bracket\-Table}$<$ T $>$ \&)
+\begin{CompactList}\small\item\em For leaf, find position of its cherry if it exists. \item\end{CompactList}\item 
+const int $\ast$ {\bf get\-Table} () const 
+\begin{CompactList}\small\item\em Return a const reference to the entire table. \item\end{CompactList}\item 
+void {\bf reset\-Neighbour} (int, int)
+\begin{CompactList}\small\item\em Reset the cherry nieghbour at position pos to val. \item\end{CompactList}\item 
+int {\bf operator[$\,$]} (int) const 
+\begin{CompactList}\small\item\em Get the offset of the cherry neighbour of the leaf at a given position. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf \_\-size}
+\item 
+int $\ast$ {\bf \_\-ntable}
+\begin{CompactList}\small\item\em size of the table \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Cherry\-Table$<$ T $>$}
+
+Stores the position of cherry neighbour of each leaf in the tree. 
+
+Leaves are cherry neighbours if they are two vertices apart in the tree. In the string representation, this corresponds to leaves that are adjacent. Leaves that correspond to trifurcations are special cases as they are not necessarily adjacent in the string but can be checked for with the bracket table. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CherryTable@{Cherry\-Table}!CherryTable@{CherryTable}}
+\index{CherryTable@{CherryTable}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Cherry\-Table}$<$ T $>$::{\bf Cherry\-Table} ()}\label{classCherryTable_a0}
+
+
+\index{CherryTable@{Cherry\-Table}!CherryTable@{CherryTable}}
+\index{CherryTable@{CherryTable}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Cherry\-Table}$<$ T $>$::{\bf Cherry\-Table} (int {\em size})}\label{classCherryTable_a1}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em size}]Size of table to create. \end{description}
+\end{Desc}
+\index{CherryTable@{Cherry\-Table}!~CherryTable@{$\sim$CherryTable}}
+\index{~CherryTable@{$\sim$CherryTable}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Cherry\-Table}$<$ T $>$::$\sim${\bf Cherry\-Table} ()}\label{classCherryTable_a2}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{CherryTable@{Cherry\-Table}!getTable@{getTable}}
+\index{getTable@{getTable}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const int $\ast$ {\bf Cherry\-Table}$<$ T $>$::get\-Table () const\hspace{0.3cm}{\tt  [inline]}}\label{classCherryTable_a5}
+
+
+Return a const reference to the entire table. 
+
+\index{CherryTable@{Cherry\-Table}!loadTree@{loadTree}}
+\index{loadTree@{loadTree}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Cherry\-Table}$<$ T $>$::load\-Tree (const {\bf UPTree}$<$ T $>$ \& {\em tree}, const {\bf Bracket\-Table}$<$ T $>$ \& {\em btable})}\label{classCherryTable_a4}
+
+
+For leaf, find position of its cherry if it exists. 
+
+The cherry is immediately adjacent in the string except if the leaf corresponds to an entire subtree in the trifurcation, then its cherry can another trifurcation. Note that we don't care about the degenerate case of a 3-leaf tree where each leaf has two cherry neighbours as such a tree is never kernelized. \index{CherryTable@{Cherry\-Table}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Cherry\-Table}$<$ T $>$::operator[$\,$] (int {\em pos}) const\hspace{0.3cm}{\tt  [inline]}}\label{classCherryTable_a7}
+
+
+Get the offset of the cherry neighbour of the leaf at a given position. 
+
+\begin{Desc}
+\item[Returns:]offset of cherry neigbhoru or -1 if it doesn't exist \end{Desc}
+\index{CherryTable@{Cherry\-Table}!resetNeighbour@{resetNeighbour}}
+\index{resetNeighbour@{resetNeighbour}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Cherry\-Table}$<$ T $>$::reset\-Neighbour (int {\em pos}, int {\em val})\hspace{0.3cm}{\tt  [inline]}}\label{classCherryTable_a6}
+
+
+Reset the cherry nieghbour at position pos to val. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pos}]Position to reset \item[{\em val}]Offset of new neighbour \end{description}
+\end{Desc}
+\index{CherryTable@{Cherry\-Table}!resize@{resize}}
+\index{resize@{resize}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Cherry\-Table}$<$ T $>$::resize (int {\em size})}\label{classCherryTable_a3}
+
+
+Resize the table if necessary. 
+
+
+
+\subsection{Member Data Documentation}
+\index{CherryTable@{Cherry\-Table}!_ntable@{\_\-ntable}}
+\index{_ntable@{\_\-ntable}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int$\ast$ {\bf Cherry\-Table}$<$ T $>$::{\bf \_\-ntable}\hspace{0.3cm}{\tt  [protected]}}\label{classCherryTable_p1}
+
+
+size of the table 
+
+\index{CherryTable@{Cherry\-Table}!_size@{\_\-size}}
+\index{_size@{\_\-size}!CherryTable@{Cherry\-Table}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Cherry\-Table}$<$ T $>$::{\bf \_\-size}\hspace{0.3cm}{\tt  [protected]}}\label{classCherryTable_p0}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+{\bf cherrytable.h}\item 
+{\bf cherrytable\_\-impl.h}\end{CompactItemize}

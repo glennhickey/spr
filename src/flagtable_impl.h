@@ -1,6 +1,7 @@
 #ifndef _FLAGTABLE_IMPL_H
 #define _FLAGTABLE_IMPL_H
 
+#include <cstdlib>
 #include "uptree.h"
 #include "brackettable.h"
 

@@ -2,6 +2,7 @@
 #define _BUILDTABLE_IMPL_H
 
 #include <limits>
+#include <cstdlib>
 #include "uptree.h"
 
 

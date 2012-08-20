@@ -2,6 +2,7 @@
 #define _TREETOK_IMPL_H
 
 #include <math.h>
+#include <cstdlib>
 /**
  * Return token type.
  * @see enum TTYPE

@@ -2,6 +2,8 @@
 #define _UPTREE_IMPL_H
 
 #include <cassert>
+#include <cstring>
+#include <cstdlib>
 #include "treetok.h"
 #include "treemanager.h"
 
